@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skills Section Preview — Jeremy Penn</title>
+  <style>
+    /* ── Design System Variables ── */
+    :root {
+      --white: #ffffff;
+      --off-white: #f8f8f6;
+      --grey-50: #fafaf8;
+      --grey-100: #f0efed;
+      --grey-200: #e4e3e0;
+      --grey-300: #c8c8c4;
+      --grey-400: #a8a8a4;
+      --grey-500: #888884;
+      --grey-600: #666662;
+      --grey-700: #444440;
+      --grey-800: #2a2a28;
+      --black: #111110;
+      --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+      --max-w: 1400px;
+      --gutter: clamp(1.5rem, 5vw, 6rem);
+      --section-spacing: clamp(6rem, 12vh, 10rem);
+    }
+
+    /* ── Reset ── */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: var(--font);
+      color: var(--black);
+      background: var(--white);
+      overflow-x: hidden;
+      line-height: 1.7;
+    }
+
+    /* ── Container ── */
+    .container {
+      width: 100%;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+    }
+
+    /* ── Section Label ── */
+    .section-label {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--grey-400);
+      margin-bottom: 2rem;
+    }
+
+    /* ── Skills Section ── */
+    .skills {
+      padding: var(--section-spacing) 0;
+      border-top: 1px solid var(--grey-100);
+    }
+
+    /* ── Skills Grid ── */
+    .skills__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 0.75rem;
+      margin-top: 2.5rem;
+    }
+
+    /* ── Skill Pill ── */
+    .skill {
+      padding: 0.75rem 1.25rem;
+      border: 1px solid var(--grey-200);
+      border-radius: 24px;
+      background: var(--white);
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      color: var(--grey-700);
+      text-align: center;
+      transition: all 0.3s var(--ease-expo);
+      cursor: default;
+    }
+
+    .skill:hover {
+      border-color: var(--grey-400);
+      background: var(--grey-50);
+      color: var(--black);
+      transform: translateY(-2px);
+    }
+
+    /* ── Responsive: Tablet ── */
+    @media (max-width: 768px) {
+      .skills__grid {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 0.6rem;
+      }
+
+      .skill {
+        padding: 0.65rem 1rem;
+        font-size: 0.8rem;
+      }
+    }
+
+    /* ── Responsive: Mobile ── */
+    @media (max-width: 480px) {
+      .skills__grid {
+        grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+        gap: 0.5rem;
+      }
+
+      .skill {
+        padding: 0.6rem 0.9rem;
+        font-size: 0.75rem;
+      }
+    }
+
+    /* ── Demo Wrapper ── */
+    .demo-wrapper {
+      background: var(--white);
+      padding: 2rem;
+    }
+
+    .demo-label {
+      font-size: 0.7rem;
+      color: var(--grey-400);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 2rem;
+      display: block;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="demo-wrapper">
+    <span class="demo-label">Desktop Preview (1280px)</span>
+
+    <section class="skills">
+      <div class="container">
+        <span class="section-label">Skills</span>
+
+        <div class="skills__grid">
+          <div class="skill">Creative Direction</div>
+          <div class="skill">Cultural Strategy</div>
+          <div class="skill">Brand Identity</div>
+          <div class="skill">Brand Architecture</div>
+          <div class="skill">Experiential Design</div>
+          <div class="skill">Brand Positioning</div>
+          <div class="skill">Consumer Technology</div>
+          <div class="skill">AI-Enabled Systems</div>
+          <div class="skill">UI/UX Design</div>
+          <div class="skill">Product Strategy</div>
+          <div class="skill">Visual Identity</div>
+          <div class="skill">Luxury Branding</div>
+          <div class="skill">Product Design</div>
+          <div class="skill">Emerging Technology</div>
+          <div class="skill">Art Direction</div>
+          <div class="skill">Studio & Team Leadership</div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Tablet Preview -->
+  <div style="margin-top: 4rem; background: var(--grey-50); padding: 2rem;">
+    <span class="demo-label">Tablet Preview (768px)</span>
+
+    <div style="max-width: 768px; margin: 0 auto;">
+      <section class="skills">
+        <div class="container">
+          <span class="section-label">Skills</span>
+
+          <div class="skills__grid">
+            <div class="skill">Creative Direction</div>
+            <div class="skill">Cultural Strategy</div>
+            <div class="skill">Brand Identity</div>
+            <div class="skill">Brand Architecture</div>
+            <div class="skill">Experiential Design</div>
+            <div class="skill">Brand Positioning</div>
+            <div class="skill">Consumer Technology</div>
+            <div class="skill">AI-Enabled Systems</div>
+            <div class="skill">UI/UX Design</div>
+            <div class="skill">Product Strategy</div>
+            <div class="skill">Visual Identity</div>
+            <div class="skill">Luxury Branding</div>
+            <div class="skill">Product Design</div>
+            <div class="skill">Emerging Technology</div>
+            <div class="skill">Art Direction</div>
+            <div class="skill">Studio & Team Leadership</div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- Mobile Preview -->
+  <div style="margin-top: 4rem; background: var(--white); padding: 2rem;">
+    <span class="demo-label">Mobile Preview (375px)</span>
+
+    <div style="max-width: 375px; margin: 0 auto;">
+      <section class="skills">
+        <div class="container">
+          <span class="section-label">Skills</span>
+
+          <div class="skills__grid">
+            <div class="skill">Creative Direction</div>
+            <div class="skill">Cultural Strategy</div>
+            <div class="skill">Brand Identity</div>
+            <div class="skill">Brand Architecture</div>
+            <div class="skill">Experiential Design</div>
+            <div class="skill">Brand Positioning</div>
+            <div class="skill">Consumer Technology</div>
+            <div class="skill">AI-Enabled Systems</div>
+            <div class="skill">UI/UX Design</div>
+            <div class="skill">Product Strategy</div>
+            <div class="skill">Visual Identity</div>
+            <div class="skill">Luxury Branding</div>
+            <div class="skill">Product Design</div>
+            <div class="skill">Emerging Technology</div>
+            <div class="skill">Art Direction</div>
+            <div class="skill">Studio & Team Leadership</div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+</body>
+</html>

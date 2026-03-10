@@ -522,7 +522,7 @@ Following its success, I assembled an unprecedented team, bringing together lead
           <div class="contact__text-col">
             <h2 class="contact__heading">The Zen Monkey doesn't check email. I do.</h2>
           </div>
-          <form class="contact__form" id="contact-form" action="https://formspree.io/f/mpqypndb" method="POST">
+          <form class="contact__form" id="contact-form">
             <div class="form-group">
               <label for="contact-name" class="form-label">Name</label>
               <input type="text" id="contact-name" name="name" class="form-input" placeholder="What do I call you?" required autocomplete="name">
@@ -537,6 +537,12 @@ Following its success, I assembled an unprecedented team, bringing together lead
             </div>
             <button type="submit" class="form-submit">Send it</button>
           </form>
+          <div id="form-success" class="form-success" style="display: none;">
+            <p class="form-success__message">Thanks for reaching out. I'll get back to you soon.</p>
+          </div>
+          <div id="form-error" class="form-error" style="display: none;">
+            <p class="form-error__message">Something went wrong. Please try again.</p>
+          </div>
         </div>
       </div>
     </section>

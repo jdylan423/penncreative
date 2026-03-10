@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Process Animation Test — Jeremy Penn Portfolio</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { -webkit-font-smoothing: antialiased; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #ffffff;
+      color: #111110;
+      line-height: 1.7;
+    }
+
+    /* ── Label bar ── */
+    .test-label {
+      background: #111110;
+      color: #fff;
+      text-align: center;
+      padding: 0.75rem 1rem;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    /* ── Exact replica of process section ── */
+    .process {
+      padding: 6rem 0;
+      background: #fafaf8; /* matches var(--grey-50) exactly */
+    }
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 clamp(1.5rem, 5vw, 6rem);
+    }
+    .section-label {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #a8a8a4;
+      margin-bottom: 3rem;
+      display: block;
+    }
+    .process__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(2rem, 3vw, 3.5rem);
+    }
+    .process-card { padding: 2rem 0; }
+
+    /* ── The animation: white bg + multiply blend = transparent effect ── */
+    .process-card__video {
+      width: clamp(80px, 15vw, 150px);
+      height: clamp(80px, 15vw, 150px);
+      margin-bottom: 1.25rem;
+      display: block;
+      mix-blend-mode: multiply; /* white disappears, black stays */
+    }
+
+    .process-card__heading {
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #111110;
+      margin-bottom: 0.6rem;
+    }
+    .process-card__body {
+      font-size: 0.92rem;
+      line-height: 1.7;
+      color: #666662;
+    }
+
+    @media (max-width: 1024px) {
+      .process__grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .process__grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── Instructions banner ── */
+    .instructions {
+      background: #f0efed;
+      border-left: 3px solid #111110;
+      padding: 1.5rem 2rem;
+      margin: 2rem auto;
+      max-width: 900px;
+      font-size: 0.88rem;
+      line-height: 1.7;
+      color: #444440;
+    }
+    .instructions strong { color: #111110; }
+    .instructions code {
+      background: #e4e3e0;
+      padding: 0.15rem 0.4rem;
+      border-radius: 3px;
+      font-family: monospace;
+      font-size: 0.85em;
+    }
+    .status {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      border-radius: 100px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-left: 0.5rem;
+    }
+    .status--waiting { background: #fff3cd; color: #856404; }
+    .status--ready   { background: #d1e7dd; color: #0f5132; }
+  </style>
+</head>
+<body>
+
+  <div class="test-label">
+    ⚙ Non-Destructive Animation Test — Process Section Preview
+  </div>
+
+  <div class="instructions">
+    <strong>How this works:</strong> Videos exported with a <strong>white background</strong> from Hera use
+    <code>mix-blend-mode: multiply</code> in CSS — white becomes invisible on the grey background,
+    leaving only the black animation visible. Zero quality loss, looks identical to true transparency.<br><br>
+
+    <strong>To update:</strong> Drop your exported files into
+    <code>animations/</code> folder as <code>process-01.webm</code>, <code>process-02.webm</code>, <code>process-03.webm</code>.
+    Then refresh this page to preview. Once approved, I'll integrate into the main site.<br><br>
+
+    <strong>Current status:</strong>
+    <span class="status status--ready">01 ✓ loaded</span>
+    <span class="status status--ready">02 ✓ loaded</span>
+    <span class="status status--ready">03 ✓ loaded</span>
+  </div>
+
+  <!-- Exact replica of the process section with real background colour -->
+  <section class="process">
+    <div class="container">
+      <span class="section-label">Process</span>
+      <div class="process__grid">
+
+        <div class="process-card">
+          <video class="process-card__video" autoplay muted loop playsinline>
+            <source src="animations/process-01.webm" type="video/webm">
+          </video>
+          <h3 class="process-card__heading">Read the Signal</h3>
+          <p class="process-card__body">Identify the cultural and human insight that makes the work matter. Before strategy, before execution — understand what's actually happening beneath the surface.</p>
+        </div>
+
+        <div class="process-card">
+          <video class="process-card__video" autoplay muted loop playsinline>
+            <source src="animations/process-02.webm" type="video/webm">
+          </video>
+          <h3 class="process-card__heading">Build the System</h3>
+          <p class="process-card__body">Design scalable brand experiences that connect across touchpoints. Systems, not one-offs. Frameworks that flex without breaking.</p>
+        </div>
+
+        <div class="process-card">
+          <video class="process-card__video" autoplay muted loop playsinline>
+            <source src="animations/process-03.webm" type="video/webm">
+          </video>
+          <h3 class="process-card__heading">Create Resonance</h3>
+          <p class="process-card__body">Shape work that lasts through relevance, affinity, and cultural impact. Not just reach — resonance.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>

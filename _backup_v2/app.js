@@ -6,12 +6,12 @@
   'use strict';
 
   /* ── CONFIG ─────────────────────────────────────────────── */
-  const FIRST_FRAME = 2;
+  const FIRST_FRAME = 1;
   const LAST_FRAME = 313;
-  const TOTAL_FRAMES = LAST_FRAME - FIRST_FRAME + 1; // 312
+  const TOTAL_FRAMES = LAST_FRAME - FIRST_FRAME + 1; // 313
   const PHASE1_COUNT = 25;
   const FRAME_PATH = (num) =>
-    `frames/snow-monkey_${String(num).padStart(4, '0')}.webp`;
+    `frames/snow-monkey_${String(num).padStart(4, '0')}.png`;
 
   /* ── DOM ─────────────────────────────────────────────────── */
   const canvas = document.getElementById('canvas');
@@ -28,8 +28,6 @@
   const hamburger = document.getElementById('nav-hamburger');
   const mobileOverlay = document.getElementById('mobile-overlay');
   const subtitleEls = document.querySelectorAll('.subtitle');
-  const aboutHeading = document.getElementById('about-heading');
-  const transitionText = transitionHL.querySelector('.transition-headline__text');
 
   /* ── STATE ──────────────────────────────────────────────── */
   const frames = new Array(TOTAL_FRAMES).fill(null);
@@ -176,12 +174,8 @@
         heroText.style.opacity = heroFade;
         heroGradient.style.opacity = heroFade;
 
-        // ── Scroll cue — visible until 50%, fades out by 60% (before CONCEPT TO CULTURE) ──
-        let cueOpacity = 1;
-        if (p > 0.50) {
-          cueOpacity = Math.max(0, 1 - (p - 0.50) / 0.10);
-        }
-        scrollCue.style.opacity = cueOpacity;
+        // ── Scroll cue — disappears immediately ──
+        scrollCue.style.opacity = Math.max(0, 1 - p * 15);
 
         // ── Canvas to white: starts at 60%, complete at 85% ──
         const fadeStart = 0.60;
@@ -190,37 +184,18 @@
         whitewash.style.opacity = canvasFade;
         canvas.style.opacity = 1 - canvasFade;
 
-        // ── "Concept to Culture" headline → settles down into about heading ──
+        // ── "Concept to Culture" headline ──
+        // Appears from 70% to 95%, peaks at 80%-85%
         let hlOpacity = 0;
-        if (p >= 0.70) {
+        if (p >= 0.70 && p <= 0.95) {
           if (p <= 0.80) {
-            // Fade in
-            hlOpacity = (p - 0.70) / 0.10;
-            transitionText.style.transform = '';
+            hlOpacity = (p - 0.70) / 0.10; // fade in
           } else if (p <= 0.88) {
-            // Hold centered
-            hlOpacity = 1;
-            transitionText.style.transform = '';
-          } else if (p <= 0.98) {
-            // Morph: scale down slightly, drift downward, fade out
-            const morphP = (p - 0.88) / 0.10;
-            const t = morphP * morphP * (3 - 2 * morphP); // smoothstep
-
-            const scale = 1 - (0.35 * t); // 1.0 → 0.65
-            const moveY = 12 * t;          // drift downward (positive = down)
-            const moveX = isMobile ? 0 : (-10 * t); // subtle left drift
-
-            hlOpacity = 1 - t; // fade out as it settles
-
-            transitionText.style.transform =
-              `translate(${moveX}vw, ${moveY}vh) scale(${scale})`;
+            hlOpacity = 1; // hold
           } else {
-            // Fully hidden — about heading takes over naturally
-            hlOpacity = 0;
-            transitionText.style.transform = '';
+            hlOpacity = 1 - (p - 0.88) / 0.07; // fade out
           }
         }
-
         transitionHL.style.opacity = Math.max(0, Math.min(1, hlOpacity));
 
         // ── Nav solid state ──
@@ -237,7 +212,7 @@
      ═══════════════════════════════════════════════════════════ */
   function updateSubtitle(p) {
     // Cycle through subtitles at 15%, 30%, 45% progress
-    const thresholds = [0.10, 0.20, 0.30, 0.40];
+    const thresholds = [0.15, 0.30, 0.45];
     let target = 0;
     for (let i = 0; i < thresholds.length; i++) {
       if (p >= thresholds[i]) target = i + 1;
@@ -297,7 +272,7 @@
      ═══════════════════════════════════════════════════════════ */
   function initReveals() {
     const sections = document.querySelectorAll(
-      '.about, .trusted-by, .project, .process, .contact'
+      '.about, .trusted-by, .project, .process'
     );
 
     const observer = new IntersectionObserver(
@@ -339,21 +314,6 @@
     });
   }
 
-  // Close buttons inside expanded case studies
-  document.querySelectorAll('.project-close-btn').forEach((btn) => {
-    btn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const project = btn.closest('.project');
-      if (project && project.classList.contains('is-open')) {
-        closeProject(project);
-        // Scroll back to the project header
-        setTimeout(() => {
-          lenis.scrollTo(project, { offset: -100 });
-        }, 100);
-      }
-    });
-  });
-
   function openProject(project, body) {
     project.classList.add('is-open');
     const inner = body.querySelector('.project-body__inner');
@@ -384,101 +344,6 @@
   }
 
   /* ═══════════════════════════════════════════════════════════
-     LIGHTBOX
-     ═══════════════════════════════════════════════════════════ */
-  function initLightbox() {
-    const lightbox = document.getElementById('lightbox');
-    if (!lightbox) return;
-
-    const lbImg = lightbox.querySelector('.lightbox__img');
-    const lbCaption = lightbox.querySelector('.lightbox__caption-text');
-    const btnClose = lightbox.querySelector('.lightbox__close');
-    const btnPrev = lightbox.querySelector('.lightbox__arrow--prev');
-    const btnNext = lightbox.querySelector('.lightbox__arrow--next');
-
-    let currentGallery = [];
-    let currentIndex = 0;
-
-    // Attach click handlers to all gallery images
-    document.querySelectorAll('.work-gallery img').forEach((img) => {
-      img.addEventListener('click', (e) => {
-        e.stopPropagation();
-        // Gather all images in this gallery
-        const gallery = img.closest('.work-gallery');
-        currentGallery = Array.from(gallery.querySelectorAll('img'));
-        currentIndex = currentGallery.indexOf(img);
-        openLightbox();
-      });
-    });
-
-    function openLightbox() {
-      showImage(currentIndex);
-      lightbox.classList.add('is-open');
-      lightbox.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeLightbox() {
-      lightbox.classList.remove('is-open');
-      lightbox.setAttribute('aria-hidden', 'true');
-      document.body.style.overflow = '';
-    }
-
-    function showImage(idx) {
-      const img = currentGallery[idx];
-      if (!img) return;
-      // Brief fade for image swap
-      lbImg.style.opacity = '0';
-      lbImg.style.transform = 'scale(0.96)';
-      setTimeout(() => {
-        lbImg.src = img.src;
-        lbImg.alt = img.alt;
-        lbCaption.textContent = img.dataset.caption || '';
-        // Force reflow
-        lbImg.offsetHeight;
-        lbImg.style.opacity = '1';
-        lbImg.style.transform = 'scale(1)';
-      }, 150);
-      // Hide/show arrows based on position
-      btnPrev.style.display = idx === 0 ? 'none' : 'flex';
-      btnNext.style.display = idx === currentGallery.length - 1 ? 'none' : 'flex';
-    }
-
-    btnClose.addEventListener('click', closeLightbox);
-    lightbox.querySelector('.lightbox__backdrop').addEventListener('click', closeLightbox);
-
-    btnPrev.addEventListener('click', (e) => {
-      e.stopPropagation();
-      if (currentIndex > 0) {
-        currentIndex--;
-        showImage(currentIndex);
-      }
-    });
-
-    btnNext.addEventListener('click', (e) => {
-      e.stopPropagation();
-      if (currentIndex < currentGallery.length - 1) {
-        currentIndex++;
-        showImage(currentIndex);
-      }
-    });
-
-    // Keyboard navigation
-    document.addEventListener('keydown', (e) => {
-      if (!lightbox.classList.contains('is-open')) return;
-      if (e.key === 'Escape') closeLightbox();
-      if (e.key === 'ArrowLeft' && currentIndex > 0) {
-        currentIndex--;
-        showImage(currentIndex);
-      }
-      if (e.key === 'ArrowRight' && currentIndex < currentGallery.length - 1) {
-        currentIndex++;
-        showImage(currentIndex);
-      }
-    });
-  }
-
-  /* ═══════════════════════════════════════════════════════════
      LOGO MARQUEE
      ═══════════════════════════════════════════════════════════ */
   function initMarquee() {
@@ -505,47 +370,6 @@
   });
 
   /* ═══════════════════════════════════════════════════════════
-     FORM SUBMISSION
-     ═══════════════════════════════════════════════════════════ */
-  function initFormHandler() {
-    const form = document.getElementById('contact-form');
-    const successMsg = document.getElementById('form-success');
-    const errorMsg = document.getElementById('form-error');
-
-    if (!form) return;
-
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-
-      const formData = new FormData(form);
-      const data = Object.fromEntries(formData);
-
-      try {
-        const response = await fetch('https://formspree.io/f/mpqypndb', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(data),
-        });
-
-        if (response.ok) {
-          // Show success message
-          form.style.display = 'none';
-          successMsg.style.display = 'block';
-          // Scroll success into view
-          successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        } else {
-          errorMsg.style.display = 'block';
-        }
-      } catch (error) {
-        console.error('Form submission error:', error);
-        errorMsg.style.display = 'block';
-      }
-    });
-  }
-
-  /* ═══════════════════════════════════════════════════════════
      INIT
      ═══════════════════════════════════════════════════════════ */
   function init() {
@@ -553,9 +377,7 @@
     loadFrames();
     initReveals();
     initWorks();
-    initLightbox();
     initMarquee();
-    initFormHandler();
   }
 
   if (document.readyState === 'loading') {

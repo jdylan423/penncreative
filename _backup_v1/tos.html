@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms of Service — Jeremy Penn Creative Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav class="nav nav--solid">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo"><img src="penn-logo-black.png" alt="PENN"></a>
+      <ul class="nav__links">
+        <li><a href="index.html#work">Work</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#process">Process</a></li>
+        <li><a href="index.html#footer">Contact</a></li>
+      </ul>
+      <button class="nav__hamburger" id="nav-hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="nav__mobile-overlay" id="mobile-overlay">
+    <a href="index.html#work">Work</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#process">Process</a>
+    <a href="index.html#footer">Contact</a>
+  </div>
+
+  <main class="legal-page">
+    <div class="container">
+      <h1>Terms of Service</h1>
+      <p><strong>Last updated:</strong> March 6, 2026</p>
+
+      <h2>1. Acceptance of Terms</h2>
+      <p>By accessing and using this website, you accept and agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use this website.</p>
+
+      <h2>2. Intellectual Property</h2>
+      <p>All content on this website, including but not limited to text, graphics, logos, images, audio clips, video clips, and software, is the property of Jeremy Penn Creative Studio and is protected by applicable copyright, trademark, and other intellectual property laws.</p>
+
+      <h2>3. Use of Website</h2>
+      <p>You may use this website for lawful purposes only. You agree not to use this website in any way that could damage, disable, overburden, or impair the website or interfere with any other party's use and enjoyment of the website.</p>
+
+      <h2>4. Portfolio and Case Studies</h2>
+      <p>The case studies and portfolio items presented on this website are for informational purposes and represent past work. Results may vary. All brand names, logos, and trademarks mentioned belong to their respective owners.</p>
+
+      <h2>5. Links to Third-Party Sites</h2>
+      <p>This website may contain links to third-party websites. These links are provided for your convenience only. We have no control over the content of these sites and accept no responsibility for them or for any loss or damage that may arise from your use of them.</p>
+
+      <h2>6. Limitation of Liability</h2>
+      <p>To the fullest extent permitted by law, Jeremy Penn Creative Studio shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising out of or relating to your use of this website.</p>
+
+      <h2>7. Modifications</h2>
+      <p>We reserve the right to modify these Terms of Service at any time. Changes will be effective immediately upon posting to this page. Your continued use of the website after any changes constitutes your acceptance of the new terms.</p>
+
+      <h2>8. Governing Law</h2>
+      <p>These Terms of Service shall be governed by and construed in accordance with the laws of the State of New York, without regard to its conflict of law provisions.</p>
+
+      <h2>9. Contact</h2>
+      <p>If you have questions about these Terms of Service, please contact Jeremy Penn Creative Studio.</p>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div>
+        <p class="footer__brand">Jeremy Penn Creative Studio</p>
+        <p class="footer__copy">&copy; 2026 Jeremy Penn Creative Studio. All rights reserved.</p>
+      </div>
+      <div class="footer__links">
+        <a href="index.html">Home</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="tos.html">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const h = document.getElementById('nav-hamburger');
+    const o = document.getElementById('mobile-overlay');
+    if (h && o) {
+      h.addEventListener('click', () => {
+        h.classList.toggle('is-active');
+        o.classList.toggle('open');
+        document.body.style.overflow = o.classList.contains('open') ? 'hidden' : '';
+      });
+      o.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+        h.classList.remove('is-active');
+        o.classList.remove('open');
+        document.body.style.overflow = '';
+      }));
+    }
+  </script>
+</body>
+</html>

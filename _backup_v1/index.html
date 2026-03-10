@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jeremy Penn — Creative Director + Cultural Strategist</title>
+  <meta name="description" content="Award-winning Creative Director and Cultural Strategist with 20+ years building brand experiences at the intersection of culture, design, and emerging technology.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- LOADER -->
+  <div id="loader" aria-hidden="true">
+    <div class="loader__bar-wrap">
+      <div id="loader-bar" class="loader__bar"></div>
+    </div>
+    <p class="loader__text">Loading</p>
+  </div>
+
+  <!-- NAVIGATION -->
+  <nav id="nav" class="nav" aria-label="Main navigation">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo" aria-label="Jeremy Penn home">
+        <img src="penn-logo-black.png" alt="PENN">
+      </a>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="#work">Work</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#footer">Contact</a></li>
+      </ul>
+      <button class="nav__hamburger" id="nav-hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile overlay -->
+  <div class="nav__mobile-overlay" id="mobile-overlay">
+    <a href="#work" class="mobile-link">Work</a>
+    <a href="#about" class="mobile-link">About</a>
+    <a href="#process" class="mobile-link">Process</a>
+    <a href="#footer" class="mobile-link">Contact</a>
+  </div>
+
+  <!-- HERO — Fixed Canvas + Overlays -->
+  <canvas id="canvas"></canvas>
+  <div id="hero-gradient"></div>
+
+  <div id="hero-text">
+    <h1 class="hero-name">Jeremy<br>Penn</h1>
+    <div class="subtitle-wrap">
+      <span class="subtitle is-active" data-index="0">Creative Director +</span>
+      <span class="subtitle" data-index="1">Artist +</span>
+      <span class="subtitle" data-index="2">Cultural Strategist +</span>
+      <span class="subtitle" data-index="3">Brand Architect +</span>
+    </div>
+  </div>
+
+  <div id="scroll-cue">
+    <span class="scroll-cue__text">Scroll</span>
+    <span class="scroll-cue__arrow"></span>
+  </div>
+
+  <div id="whitewash"></div>
+
+  <!-- Transition headline between hero and content -->
+  <div id="transition-headline">
+    <h2 class="transition-headline__text">Concept<br>to Culture</h2>
+  </div>
+
+  <!-- Hero scroll spacer -->
+  <div id="hero-scroll"></div>
+
+  <!-- SITE CONTENT -->
+  <main class="site-content">
+
+    <!-- ABOUT -->
+    <section id="about" class="about">
+      <div class="container">
+        <span class="section-label">About</span>
+        <div class="about__inner">
+          <div class="about__text-col">
+            <h2 class="about__heading">Building at the intersection of culture, design, and technology.</h2>
+            <p class="about__body">From concept to culture, I've spent over 20 years building creative systems, designing product, leading high-output teams, and shaping experiences that last. Rooted in fine art and a deep understanding of the human experience, I identify cultural signals early and use emerging technologies to create brand experiences that deepen human connection, drive lasting impact, and build cultural resonance.</p>
+          </div>
+          <div class="about__photo-col">
+            <img src="jeremy-penn-creative-director.png" alt="Jeremy Penn" class="about__photo">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRUSTED BY -->
+    <section id="trusted-by" class="trusted-by">
+      <div class="container">
+        <span class="section-label">Trusted By</span>
+      </div>
+      <div class="marquee-row marquee-row--1">
+        <div class="marquee-inner">
+          <img src="brand_assets/new site logos black/lululemon-logo.png" alt="Lululemon">
+          <img src="brand_assets/new site logos black/Saks-Fifth-Avenue-Logo.png" alt="Saks Fifth Avenue">
+          <img src="brand_assets/new site logos black/Coach-logo.png" alt="Coach">
+          <img src="brand_assets/new site logos black/Hugo-Boss-Logo-before-2021.png" alt="Hugo Boss">
+          <img src="brand_assets/new site logos black/Maxim_Magazine_Logo.png" alt="Maxim">
+          <img src="brand_assets/new site logos black/amex.png" alt="American Express">
+          <img src="brand_assets/new site logos black/UMG.AS_BIG.png" alt="Universal Music Group">
+          <img src="brand_assets/new site logos black/ED.png" alt="Ed Hardy">
+          <img src="brand_assets/new site logos black/Lowes_Hotels_Logos.png" alt="Loews Hotels">
+          <img src="brand_assets/new site logos black/missoni-logo.png" alt="Missoni">
+          <!-- duplicate for seamless loop -->
+          <img src="brand_assets/new site logos black/lululemon-logo.png" alt="Lululemon">
+          <img src="brand_assets/new site logos black/Saks-Fifth-Avenue-Logo.png" alt="Saks Fifth Avenue">
+          <img src="brand_assets/new site logos black/Coach-logo.png" alt="Coach">
+          <img src="brand_assets/new site logos black/Hugo-Boss-Logo-before-2021.png" alt="Hugo Boss">
+          <img src="brand_assets/new site logos black/Maxim_Magazine_Logo.png" alt="Maxim">
+          <img src="brand_assets/new site logos black/amex.png" alt="American Express">
+          <img src="brand_assets/new site logos black/UMG.AS_BIG.png" alt="Universal Music Group">
+          <img src="brand_assets/new site logos black/ED.png" alt="Ed Hardy">
+          <img src="brand_assets/new site logos black/Lowes_Hotels_Logos.png" alt="Loews Hotels">
+          <img src="brand_assets/new site logos black/missoni-logo.png" alt="Missoni">
+        </div>
+      </div>
+      <div class="marquee-row marquee-row--2">
+        <div class="marquee-inner">
+          <img src="brand_assets/new site logos black/jarritos-logo.png" alt="Jarritos">
+          <img src="brand_assets/new site logos black/tretorn-logo.png" alt="Tretorn">
+          <img src="brand_assets/new site logos black/cotton-logo.png" alt="Cotton">
+          <img src="brand_assets/new site logos black/helix-logo.png" alt="Helix">
+          <img src="brand_assets/new site logos black/Ledger-700x700.png" alt="Ledger">
+          <img src="brand_assets/new site logos black/stake-logo-png_seeklogo-436813.png" alt="Stake">
+          <img src="brand_assets/new site logos black/RKD-logo.png" alt="RKD">
+          <img src="brand_assets/new site logos black/inverus-logo.png" alt="Inverus">
+          <img src="brand_assets/new site logos black/Good Luck Dry Cleaners Logo copy.jpeg" alt="Good Luck Dry Cleaners">
+          <!-- duplicate -->
+          <img src="brand_assets/new site logos black/jarritos-logo.png" alt="Jarritos">
+          <img src="brand_assets/new site logos black/tretorn-logo.png" alt="Tretorn">
+          <img src="brand_assets/new site logos black/cotton-logo.png" alt="Cotton">
+          <img src="brand_assets/new site logos black/helix-logo.png" alt="Helix">
+          <img src="brand_assets/new site logos black/Ledger-700x700.png" alt="Ledger">
+          <img src="brand_assets/new site logos black/stake-logo-png_seeklogo-436813.png" alt="Stake">
+          <img src="brand_assets/new site logos black/RKD-logo.png" alt="RKD">
+          <img src="brand_assets/new site logos black/inverus-logo.png" alt="Inverus">
+          <img src="brand_assets/new site logos black/Good Luck Dry Cleaners Logo copy.jpeg" alt="Good Luck Dry Cleaners">
+        </div>
+      </div>
+    </section>
+
+    <!-- SELECTED WORKS -->
+    <section id="work" class="selected-works">
+      <div class="container">
+        <span class="section-label">Selected Works</span>
+
+        <!-- LULULEMON -->
+        <article class="project" id="project-lululemon">
+          <div class="project-header">
+            <div class="project-meta">
+              <h3 class="project-name">Lululemon</h3>
+              <p class="project-services">Creative Direction &middot; Experiential Design &middot; Brand Positioning</p>
+              <div class="project-toggle"><span class="project-toggle__icon"></span> <span class="project-toggle__label">View Case Study</span></div>
+            </div>
+            <div class="project-thumb">
+              <img src="https://placehold.co/800x500/eae8e3/999?text=+" alt="Lululemon project">
+            </div>
+          </div>
+          <div class="project-body">
+            <div class="project-body__inner">
+              <div class="case-sections">
+                <div class="case-section">
+                  <p class="case-section__label">Opportunity</p>
+                  <h4 class="case-section__heading">The Opportunity</h4>
+                  <p class="case-section__body">At their 20-year mark, Lululemon faced the problem every successful brand eventually confronts: the market had caught up. Wellness was everywhere. Athleisure was everywhere. And when everything looks like you, the danger isn't losing customers &mdash; it's losing meaning. The opportunity was hiding in plain sight. Lululemon had something most brands spend decades trying to manufacture: a genuinely devoted community.</p>
+                </div>
+                <div class="case-section">
+                  <p class="case-section__label">Challenge</p>
+                  <h4 class="case-section__heading">The Challenge</h4>
+                  <p class="case-section__body">How do you translate authentic community devotion into a brand position that feels earned rather than extracted? How do you elevate without alienating? How do you write a manifesto for people who already know what they believe, without telling them what to believe? That's the line we had to walk. High-end but accessible. Confident but not prescriptive.</p>
+                </div>
+                <div class="case-section" style="grid-column: 1 / -1;">
+                  <p class="case-section__label">Approach</p>
+                  <h4 class="case-section__heading">The Approach</h4>
+                  <p class="case-section__body">I started where most brands don't: with listening. Before any strategy, I spent time inside Lululemon's community &mdash; not to validate assumptions, but to understand what the brand actually meant to people's lives. What emerged wasn't surprising in hindsight, but it was clarifying: people weren't buying athletic wear. They were buying a philosophy. So we made it explicit. Every touchpoint &mdash; physical spaces, programming, events, language &mdash; was designed to reflect that philosophy back to the community. The repositioning landed because it wasn't invented. It was excavated.</p>
+                </div>
+              </div>
+              <div class="work-gallery">
+                <img src="https://placehold.co/600x450/f0efed/bbb?text=+" alt="Lululemon work 1">
+                <img src="https://placehold.co/600x450/f0efed/bbb?text=+" alt="Lululemon work 2">
+                <img src="https://placehold.co/600x450/f0efed/bbb?text=+" alt="Lululemon work 3">
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- SAKS FIFTH AVENUE -->
+        <article class="project" id="project-saks">
+          <div class="project-header">
+            <div class="project-meta">
+              <h3 class="project-name">Saks Fifth Avenue</h3>
+              <p class="project-services">Creative Direction &middot; Brand Positioning &middot; Experiential Design</p>
+              <div class="project-toggle"><span class="project-toggle__icon"></span> <span class="project-toggle__label">View Case Study</span></div>
+            </div>
+            <div class="project-thumb">
+              <img src="https://placehold.co/800x500/eae8e3/999?text=+" alt="Saks Fifth Avenue project">
+            </div>
+          </div>
+          <div class="project-body">
+            <div class="project-body__inner">
+              <div class="case-sections">
+                <div class="case-section">
+                  <p class="case-section__label">Opportunity</p>
+                  <h4 class="case-section__heading">The Opportunity</h4>
+                  <p class="case-section__body">Saks Fifth Avenue had built an iconic legacy in luxury retail, but faced an identity crisis in a rapidly evolving market. Younger consumers saw them as prestigious but disconnected from contemporary culture. The real opportunity: Saks had something competitors didn't &mdash; institutional credibility, heritage, and access to cultural moments. They needed to reposition from "luxury retailer" to "cultural curator."</p>
+                </div>
+                <div class="case-section">
+                  <p class="case-section__label">Challenge</p>
+                  <h4 class="case-section__heading">The Challenge</h4>
+                  <p class="case-section__body">Reposition Saks Fifth Avenue as a high-end cultural authority that could speak to both legacy customers and emerging cultural leaders. Balance sophistication with accessibility. Create a brand narrative that felt earned, not desperate. Make them feel like the epicenter of culture, not a museum.</p>
+                </div>
+                <div class="case-section" style="grid-column: 1 / -1;">
+                  <p class="case-section__label">Approach</p>
+                  <h4 class="case-section__heading">The Approach</h4>
+                  <p class="case-section__body">We started by mapping Saks' actual cultural touchpoints &mdash; their real assets. The iconic 5th Avenue windows as a stage for artists. The basement speakeasy vibe. Their fashion book tradition. Their ability to bring together artists, designers, and tastemakers. We developed a complete visual and narrative identity that positioned Saks as a cultural brand first, retailer second. Bold, contemporary, unapologetically cultural &mdash; NYC street culture meets luxury refinement.</p>
+                </div>
+              </div>
+              <div class="work-gallery">
+                <img src="https://placehold.co/600x450/f0efed/bbb?text=+" alt="Saks work 1">
+                <img src="https://placehold.co/600x450/f0efed/bbb?text=+" alt="Saks work 2">
+                <img src="https://placehold.co/600x450/f0efed/bbb?text=+" alt="Saks work 3">
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- GOOD LUCK DRY CLEANERS -->
+        <article class="project" id="project-gldc">
+          <div class="project-header">
+            <div class="project-meta">
+              <h3 class="project-name">Good Luck Dry Cleaners</h3>
+              <p class="project-services">Founder &middot; Creative Direction &middot; Brand Partnerships &middot; Experiential Design</p>
+              <div class="project-toggle"><span class="project-toggle__icon"></span> <span class="project-toggle__label">View Case Study</span></div>
+            </div>
+            <div class="project-thumb">
+              <img src="https://placehold.co/800x500/eae8e3/999?text=+" alt="Good Luck Dry Cleaners project">
+            </div>
+          </div>
+          <div class="project-body">
+            <div class="project-body__inner">
+              <div class="case-sections">
+                <div class="case-section">
+                  <p class="case-section__label">Opportunity</p>
+                  <h4 class="case-section__heading">The Opportunity</h4>
+                  <p class="case-section__body">Retail was dying. Landlords had vacant storefronts they couldn't fill. Brands had no way to reach customers authentically. Communities had lost the gathering spaces that made neighborhoods feel alive. But those three problems pointed to the same solution. What if you created cultural spaces so compelling that landlords would pay you to open them, brands would fight to activate them, and communities would live in them?</p>
+                </div>
+                <div class="case-section">
+                  <p class="case-section__label">Challenge</p>
+                  <h4 class="case-section__heading">The Challenge</h4>
+                  <p class="case-section__body">Transform retail into cultural destinations, then prove it was a business model, not a passion project. That meant solving three things at once: making it scalable across five NYC locations, making it profitable without compromising authenticity, and making it so culturally magnetic that people got tattoos without being asked.</p>
+                </div>
+                <div class="case-section" style="grid-column: 1 / -1;">
+                  <p class="case-section__label">Approach</p>
+                  <h4 class="case-section__heading">The Approach</h4>
+                  <p class="case-section__body">We started with a single insight: the best brands are communities first, merchants second. Everything else followed from that. We targeted abandoned retail in neighborhoods with creative energy, built genuine cultural hubs with events and community gatherings, and let brands earn entry through cultural credibility. Saks, Lululemon, Maxim, Getty Images, CBGB, Ed Hardy &mdash; they all came to us. Five locations across NYC. Landlords paid us to open. People got tattoos.</p>
+                </div>
+              </div>
+              <div class="work-gallery">
+                <img src="https://placehold.co/600x450/f0efed/bbb?text=+" alt="GLDC work 1">
+                <img src="https://placehold.co/600x450/f0efed/bbb?text=+" alt="GLDC work 2">
+                <img src="https://placehold.co/600x450/f0efed/bbb?text=+" alt="GLDC work 3">
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- DEGEN ARCADE / UNDED GAMES -->
+        <article class="project" id="project-degen">
+          <div class="project-header">
+            <div class="project-meta">
+              <h3 class="project-name">Degen Arcade / UNDED Games</h3>
+              <p class="project-services">Founder &middot; Creative Direction &middot; Product Design</p>
+              <div class="project-toggle"><span class="project-toggle__icon"></span> <span class="project-toggle__label">View Case Study</span></div>
+            </div>
+            <div class="project-thumb">
+              <img src="https://placehold.co/800x500/eae8e3/999?text=+" alt="Degen Arcade project">
+            </div>
+          </div>
+          <div class="project-body">
+            <div class="project-body__inner">
+              <div class="case-sections">
+                <div class="case-section">
+                  <p class="case-section__label">Opportunity</p>
+                  <h4 class="case-section__heading">The Opportunity</h4>
+                  <p class="case-section__body">Brands were stuck in a one-way relationship with consumers. Digital loyalty programs felt transactional and disconnected. Meanwhile, blockchain technology was creating new possibilities for digital asset ownership, but no one had figured out how to make it accessible at scale or integrated into physical consumer touchpoints. We saw an opportunity to bridge this gap: what if existing gaming and vending machines could become distribution channels for digital assets?</p>
+                </div>
+                <div class="case-section">
+                  <p class="case-section__label">Challenge</p>
+                  <h4 class="case-section__heading">The Challenge</h4>
+                  <p class="case-section__body">The core challenge wasn't hardware. It was software architecture. We needed to build a patent-pending engine capable of managing on-chain digital asset distribution at enterprise scale, creating compelling game mechanics, integrating with existing physical infrastructure, and proving the software could drive lasting engagement.</p>
+                </div>
+                <div class="case-section" style="grid-column: 1 / -1;">
+                  <p class="case-section__label">Approach</p>
+                  <h4 class="case-section__heading">The Approach</h4>
+                  <p class="case-section__body">We started with the claw machine as a physical proof-of-concept, demonstrating how software could define the future of brand engagement through on-chain digital distribution and gamification. Following its success, I assembled an unprecedented team &mdash; a Chief Architect from Spotify, Head of Innovation from Nike Games, game developers from Rockstar Games, behavioral mathematicians from Las Vegas, and product leaders from Apple &mdash; and we formed RKD to scale the gamification engine for enterprise adoption.</p>
+                </div>
+              </div>
+              <div class="work-gallery">
+                <img src="https://placehold.co/600x450/f0efed/bbb?text=+" alt="Degen work 1">
+                <img src="https://placehold.co/600x450/f0efed/bbb?text=+" alt="Degen work 2">
+                <img src="https://placehold.co/600x450/f0efed/bbb?text=+" alt="Degen work 3">
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section id="process" class="process">
+      <div class="container">
+        <span class="section-label">Process</span>
+        <div class="process__grid">
+          <div class="process-card">
+            <div class="process-card__number">01</div>
+            <h3 class="process-card__heading">Read the Signal</h3>
+            <p class="process-card__body">Identify the cultural and human insight that makes the work matter. Before strategy, before execution &mdash; understand what's actually happening beneath the surface.</p>
+          </div>
+          <div class="process-card">
+            <div class="process-card__number">02</div>
+            <h3 class="process-card__heading">Build the System</h3>
+            <p class="process-card__body">Design scalable brand experiences that connect across touchpoints. Systems, not one-offs. Frameworks that flex without breaking.</p>
+          </div>
+          <div class="process-card">
+            <div class="process-card__number">03</div>
+            <h3 class="process-card__heading">Create Resonance</h3>
+            <p class="process-card__body">Shape work that lasts through relevance, affinity, and cultural impact. Not just attention &mdash; connection. Not just reach &mdash; resonance.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="footer" class="footer">
+      <div class="container footer__inner">
+        <div>
+          <p class="footer__brand">Jeremy Penn Creative Studio</p>
+          <p class="footer__copy">&copy; 2026 Jeremy Penn Creative Studio. All rights reserved.</p>
+        </div>
+        <div class="footer__links">
+          <a href="https://twitter.com" target="_blank" rel="noopener">Twitter</a>
+          <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="tos.html">Terms of Service</a>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- SCRIPTS -->
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
