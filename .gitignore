@@ -1,0 +1,7 @@
+# Git ignore
+*.DS_Store
+.env
+node_modules/
+.tmp/
+*.backup
+jeremy-penn-portfolio_backup_*.html
