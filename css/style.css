@@ -17,7 +17,8 @@
   --grey-700: #444440;
   --grey-800: #2a2a28;
   --black: #111110;
-  --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-display: 'Fraunces', Georgia, serif;
   --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
   --max-w: 1400px;
@@ -271,6 +272,7 @@ ul { list-style: none; }
   pointer-events: none;
 }
 .hero-name {
+  font-family: var(--font-display);
   font-size: clamp(2.4rem, 5.5vw, 5.5rem);
   font-weight: 900;
   letter-spacing: -0.04em;
@@ -281,16 +283,17 @@ ul { list-style: none; }
 }
 .subtitle-wrap {
   position: relative;
-  height: 2.5rem;
+  min-height: 2.5rem;
   overflow: hidden;
 }
 .subtitle {
   display: none;
-  font-size: clamp(1rem, 1.8vw, 1.5rem);
+  font-size: clamp(0.95rem, 1.8vw, 1.4rem);
   font-weight: 400;
   color: var(--grey-600);
   letter-spacing: 0.01em;
-  white-space: nowrap;
+  white-space: normal;
+  max-width: 42ch;
 }
 .subtitle.is-active {
   display: block;
@@ -362,6 +365,7 @@ ul { list-style: none; }
   opacity: 0;
 }
 .transition-headline__text {
+  font-family: var(--font-display);
   font-size: clamp(2.2rem, 6vw, 5.5rem);
   font-weight: 900;
   letter-spacing: -0.04em;
@@ -416,6 +420,7 @@ ul { list-style: none; }
   max-width: 680px;
 }
 .about__heading {
+  font-family: var(--font-display);
   font-size: clamp(1.8rem, 3vw, 2.8rem);
   font-weight: 900;
   letter-spacing: -0.04em;
@@ -542,6 +547,7 @@ ul { list-style: none; }
 .project-header:hover { background: var(--grey-50); }
 .project-meta { display: flex; flex-direction: column; gap: 0.4rem; }
 .project-name {
+  font-family: var(--font-display);
   font-size: clamp(1.6rem, 3vw, 2.8rem);
   font-weight: 700;
   letter-spacing: -0.03em;
@@ -762,6 +768,7 @@ ul { list-style: none; }
   max-width: 480px;
 }
 .contact__heading {
+  font-family: var(--font-display);
   font-size: clamp(1.8rem, 3vw, 2.8rem);
   font-weight: 700;
   letter-spacing: -0.03em;
