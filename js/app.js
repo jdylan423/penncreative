@@ -6,12 +6,14 @@
   'use strict';
 
   /* ── CONFIG ─────────────────────────────────────────────── */
-  const FIRST_FRAME = 2;
-  const LAST_FRAME = 313;
-  const TOTAL_FRAMES = LAST_FRAME - FIRST_FRAME + 1; // 312
-  const PHASE1_COUNT = 25;
+  // Scene: monkey-12fps (129 frames, 0001–0129)
+  // Previous scene archived at: scroll-scenes/monkey-v1/
+  const FIRST_FRAME = 1;
+  const LAST_FRAME = 129;
+  const TOTAL_FRAMES = LAST_FRAME - FIRST_FRAME + 1; // 129
+  const PHASE1_COUNT = 20;
   const FRAME_PATH = (num) =>
-    `frames/snow-monkey_${String(num).padStart(4, '0')}.webp`;
+    `scroll-scenes/monkey-12fps/snow-monkey_${String(num).padStart(4, '0')}.webp`;
 
   /* ── DOM ─────────────────────────────────────────────────── */
   const canvas = document.getElementById('canvas');
@@ -207,13 +209,12 @@
             const t = morphP * morphP * (3 - 2 * morphP); // smoothstep
 
             const scale = 1 - (0.35 * t); // 1.0 → 0.65
-            const moveY = 12 * t;          // drift downward (positive = down)
-            const moveX = isMobile ? 0 : (-10 * t); // subtle left drift
+            const moveY = 12 * t;          // drift downward only — no horizontal shift
 
             hlOpacity = 1 - t; // fade out as it settles
 
             transitionText.style.transform =
-              `translate(${moveX}vw, ${moveY}vh) scale(${scale})`;
+              `translateY(${moveY}vh) scale(${scale})`;
           } else {
             // Fully hidden — about heading takes over naturally
             hlOpacity = 0;
@@ -236,7 +237,7 @@
      SUBTITLE — scrub-driven, no pause
      ═══════════════════════════════════════════════════════════ */
   function updateSubtitle(p) {
-    // Cycle through subtitles at 15%, 30%, 45% progress
+    if (!subtitleEls.length) return; // no subtitle elements present
     const thresholds = [0.10, 0.20, 0.30, 0.40];
     let target = 0;
     for (let i = 0; i < thresholds.length; i++) {
@@ -245,7 +246,6 @@
     target = Math.min(target, subtitleEls.length - 1);
 
     if (target !== currentSub) {
-      // Immediate swap with CSS transition
       subtitleEls[currentSub].classList.remove('is-active');
       subtitleEls[currentSub].style.opacity = '0';
 
@@ -546,12 +546,114 @@
   }
 
   /* ═══════════════════════════════════════════════════════════
+     CONCEPT REVEAL — V2: stagger fade-in on enter, no pin
+     ═══════════════════════════════════════════════════════════ */
+  function initConceptReveal() {
+    const section = document.getElementById('concept-reveal');
+    if (!section) return;
+
+    const lines      = section.querySelectorAll('.concept-reveal__line');
+    const resolution = section.querySelector('.concept-reveal__resolution');
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    // Lines stagger in — deliberate pacing, each line earns its moment
+    gsap.to(lines, {
+      opacity: 1,
+      y: 0,
+      duration: 1.1,
+      ease: 'power3.out',
+      stagger: 0.28,
+      scrollTrigger: {
+        trigger: section,
+        start: 'top 68%',
+      },
+    });
+
+    // Resolution arrives after all three lines have settled
+    gsap.to(resolution, {
+      opacity: 1,
+      y: 0,
+      duration: 1.0,
+      ease: 'power3.out',
+      delay: 0.95,
+      scrollTrigger: {
+        trigger: section,
+        start: 'top 68%',
+      },
+    });
+  }
+
+  /* ═══════════════════════════════════════════════════════════
+     PROCESS — Editorial row animations
+     ═══════════════════════════════════════════════════════════ */
+  function initProcess() {
+    const grid = document.querySelector('.practice__grid');
+    if (!grid) return;
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    // Helper: get stroke length for any SVG shape
+    function svgLen(el) {
+      if (typeof el.getTotalLength === 'function') return el.getTotalLength();
+      if (el.tagName === 'circle') return 2 * Math.PI * parseFloat(el.getAttribute('r'));
+      if (el.tagName === 'line') {
+        const dx = parseFloat(el.getAttribute('x2')) - parseFloat(el.getAttribute('x1'));
+        const dy = parseFloat(el.getAttribute('y2')) - parseFloat(el.getAttribute('y1'));
+        return Math.sqrt(dx * dx + dy * dy);
+      }
+      return 100;
+    }
+
+    // Pre-set all icon paths to invisible (dashoffset = dashlength)
+    grid.querySelectorAll('.practice__icon-svg path, .practice__icon-svg line, .practice__icon-svg circle').forEach(el => {
+      const len = svgLen(el);
+      gsap.set(el, { strokeDasharray: len, strokeDashoffset: len });
+    });
+
+    const cols = grid.querySelectorAll('.practice__col');
+
+    // One timeline, one trigger — stagger cascades via absolute offsets
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: grid,
+        start: 'top 78%',
+      },
+    });
+
+    cols.forEach((col, i) => {
+      const rule  = col.querySelector('.practice__rule');
+      const icon  = col.querySelectorAll('.practice__icon-svg path, .practice__icon-svg line, .practice__icon-svg circle');
+      const num   = col.querySelector('.practice__num');
+      const name  = col.querySelector('.practice__name');
+      const tag   = col.querySelector('.practice__tag');
+      const o     = i * 0.14; // column stagger offset
+
+      // Rule draws + icon paths draw in simultaneously
+      tl
+        .to(rule, { scaleX: 1, duration: 0.65, ease: 'power3.inOut' }, o)
+        .to(icon,  {
+          strokeDashoffset: 0,
+          duration: 0.7,
+          stagger: 0.06,
+          ease: 'power2.inOut',
+        }, o)
+        // Text cascade after icon starts drawing
+        .to(num,  { opacity: 1, y: 0, duration: 0.38, ease: 'power2.out' }, o + 0.24)
+        .to(name, { opacity: 1, y: 0, duration: 0.55, ease: 'power2.out' }, o + 0.34)
+        .to(tag,  { opacity: 1, y: 0, duration: 0.46, ease: 'power2.out' }, o + 0.50);
+    });
+  }
+
+  /* ═══════════════════════════════════════════════════════════
      INIT
      ═══════════════════════════════════════════════════════════ */
   function init() {
     initNav();
     loadFrames();
     initReveals();
+    initConceptReveal();
+    initProcess();
     initWorks();
     initLightbox();
     initMarquee();
