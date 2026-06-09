@@ -38,8 +38,6 @@
   let currentFrameIndex = 0;
   let currentSub = 0;
   let isMobile = window.innerWidth < 768;
-  // Handoff flag — once concept-reveal takes over #transition-headline, hero stops touching it
-  let hlOwnedByConceptReveal = false;
 
   /* ═══════════════════════════════════════════════════════════
      LENIS SMOOTH SCROLL
@@ -187,24 +185,45 @@
         }
         scrollCue.style.opacity = cueOpacity;
 
-        // ── Canvas fade: starts 60%, complete at 78% — finishes before
-        //    .site-content scrolls into view at ~80%, so no visible
-        //    "black slate" edge slides over the canvas. ──
+        // ── Canvas to white: starts at 60%, complete at 85% ──
         const fadeStart = 0.60;
-        const fadeEnd = 0.78;
+        const fadeEnd = 0.85;
         const canvasFade = Math.max(0, Math.min(1, (p - fadeStart) / (fadeEnd - fadeStart)));
         whitewash.style.opacity = canvasFade;
         canvas.style.opacity = 1 - canvasFade;
 
-        // ── Concept to Culture: slide up from below as background darkens ──
-        // p=0.60→0.82: brand rises from 35vh below resting spot (38vh), fades in.
-        // Single element: #transition-headline only (in-section brand stays opacity:0).
-        // concept-reveal ST onEnter takes ownership via flag.
-        if (!hlOwnedByConceptReveal) {
-          const slideP = Math.max(0, Math.min(1, (p - 0.60) / 0.22));
-          transitionHL.style.opacity   = Math.min(1, slideP * 1.4); // opacity leads slightly
-          transitionHL.style.transform = `translateY(${(1 - slideP) * 35}vh)`;
+        // ── "Concept to Culture" headline → settles down into about heading ──
+        let hlOpacity = 0;
+        if (p >= 0.70) {
+          if (p <= 0.80) {
+            // Fade in
+            hlOpacity = (p - 0.70) / 0.10;
+            transitionText.style.transform = '';
+          } else if (p <= 0.88) {
+            // Hold centered
+            hlOpacity = 1;
+            transitionText.style.transform = '';
+          } else if (p <= 0.98) {
+            // Morph: scale down slightly, drift downward, fade out
+            const morphP = (p - 0.88) / 0.10;
+            const t = morphP * morphP * (3 - 2 * morphP); // smoothstep
+
+            const scale = 1 - (0.35 * t); // 1.0 → 0.65
+            const moveY = 12 * t;          // drift downward (positive = down)
+            const moveX = isMobile ? 0 : (-10 * t); // subtle left drift
+
+            hlOpacity = 1 - t; // fade out as it settles
+
+            transitionText.style.transform =
+              `translate(${moveX}vw, ${moveY}vh) scale(${scale})`;
+          } else {
+            // Fully hidden — about heading takes over naturally
+            hlOpacity = 0;
+            transitionText.style.transform = '';
+          }
         }
+
+        transitionHL.style.opacity = Math.max(0, Math.min(1, hlOpacity));
 
         // ── Nav solid state ──
         navEl.classList.toggle('nav--solid', p > 0.02);
@@ -219,7 +238,7 @@
      SUBTITLE — scrub-driven, no pause
      ═══════════════════════════════════════════════════════════ */
   function updateSubtitle(p) {
-    if (!subtitleEls.length) return; // no subtitle elements present
+    // Cycle through subtitles at 15%, 30%, 45% progress
     const thresholds = [0.10, 0.20, 0.30, 0.40];
     let target = 0;
     for (let i = 0; i < thresholds.length; i++) {
@@ -228,6 +247,7 @@
     target = Math.min(target, subtitleEls.length - 1);
 
     if (target !== currentSub) {
+      // Immediate swap with CSS transition
       subtitleEls[currentSub].classList.remove('is-active');
       subtitleEls[currentSub].style.opacity = '0';
 
@@ -528,244 +548,12 @@
   }
 
   /* ═══════════════════════════════════════════════════════════
-     CONCEPT REVEAL — V2: stagger fade-in on enter, no pin
-     ═══════════════════════════════════════════════════════════ */
-  function initConceptReveal() {
-    const section = document.getElementById('concept-reveal');
-    if (!section) return;
-
-    const brand = section.querySelector('.concept-reveal__brand');
-    const lines = section.querySelectorAll('.concept-reveal__line');
-
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      // brand shown via transitionHL (fixed overlay); don't touch in-section brand
-      gsap.set(transitionHL, { opacity: 1 });
-      gsap.set([...lines], { opacity: 1, y: 0 });
-      return;
-    }
-
-    // Brand + lines inside pinned section — GSAP owns everything, no hero conflict.
-    // Timeline (200vh):
-    // Brand is ONLY shown via #transition-headline (fixed overlay, hero-driven).
-    // This section's GSAP timeline handles ONLY the 3 lines + synced fade-out.
-    //   0.00–0.18   line 1 fades in
-    //   0.35–0.53   line 2 fades in
-    //   0.70–0.88   line 3 fades in
-    //   0.88–1.60   hold — brand + all lines visible together
-    //   1.60–1.95   lines + transitionHL (brand) fade out as one
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: section,
-        start: 'top top',
-        end: '+=150%',
-        pin: true,
-        scrub: 0.5,
-        anticipatePin: 1,
-        onEnter() {
-          // Hero has set transitionHL to full opacity; take ownership so hero stops touching it
-          hlOwnedByConceptReveal = true;
-        },
-        onLeaveBack() {
-          // Return transitionHL control to hero onUpdate (restores opacity + translateY)
-          hlOwnedByConceptReveal = false;
-        },
-      },
-    });
-
-    // .concept-reveal__brand stays opacity:0 — visual brand is transitionHL only
-
-    lines.forEach((line, i) => {
-      tl.fromTo(line,
-        { opacity: 0 },
-        { opacity: 1, duration: 0.18, ease: 'power2.out' },
-        i * 0.20
-      );
-    });
-
-    // Fade out in place — no y movement, just opacity
-    tl.to([...lines], { opacity: 0, duration: 0.35, ease: 'none' }, 1.20);
-    tl.to(transitionHL, { opacity: 0, duration: 0.35, ease: 'none' }, 1.20);
-  }
-
-  /* ═══════════════════════════════════════════════════════════
-     PROCESS — Editorial row animations
-     ═══════════════════════════════════════════════════════════ */
-  async function initProcess() {
-    const section = document.querySelector('.process');
-    const grid    = document.querySelector('.practice__grid');
-    if (!grid || !section) return;
-
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    // ── 1. Fetch & inject SVGs ──────────────────────────────────
-    const wraps = grid.querySelectorAll('.practice__icon-wrap[data-icon]');
-
-    await Promise.all(Array.from(wraps).map(async (wrap) => {
-      const key = wrap.dataset.icon;
-      try {
-        const res  = await fetch(`brand_assets/icons/${key}.svg`);
-        const text = await res.text();
-        const parser = new DOMParser();
-        const doc    = parser.parseFromString(text, 'image/svg+xml');
-        const svg    = doc.querySelector('svg');
-        if (!svg) return;
-        svg.setAttribute('aria-hidden', 'true');
-        svg.style.width   = '100%';
-        svg.style.height  = '100%';
-        svg.style.display = 'block';
-        wrap.appendChild(svg);
-      } catch (e) {
-        console.warn('Icon load failed:', key, e);
-      }
-    }));
-
-    if (reduced) return;
-
-    const cols = grid.querySelectorAll('.practice__col');
-
-    // ── 2. Initial hidden state ──────────────────────────────────
-    cols.forEach(col => {
-      const rule = col.querySelector('.practice__rule');
-      const num  = col.querySelector('.practice__num');
-      const name = col.querySelector('.practice__name');
-      const tag  = col.querySelector('.practice__tag');
-      gsap.set([num, name, tag], { opacity: 0, y: 10 });
-      if (rule) gsap.set(rule, { scaleX: 0 });
-    });
-
-    // Stroke-draw setup: fill starts transparent, stroke draws first
-    wraps.forEach(wrap => {
-      wrap.querySelectorAll('path, circle, rect, ellipse, polygon, polyline').forEach(el => {
-        const len = typeof el.getTotalLength === 'function' ? el.getTotalLength() : 400;
-        el.setAttribute('fill', 'white');
-        el.setAttribute('fill-opacity', '0');
-        el.setAttribute('stroke', 'white');
-        el.setAttribute('stroke-width', '1');
-        el.setAttribute('stroke-linecap', 'round');
-        el.setAttribute('stroke-linejoin', 'round');
-        el.setAttribute('stroke-dasharray', len);
-        el.setAttribute('stroke-dashoffset', len);
-      });
-    });
-
-    // ── 3. TWO-PHASE SCROLL ANIMATION ───────────────────────────
-    // Phase 1 (no pin): BUILD fires as section enters viewport
-    //   Starts when section top hits 85% of viewport, completes at 'top top'
-    //   No empty dead scroll — icons draw immediately as section comes into view
-    //
-    // Phase 2 (pin): LOCK + DISMANTLE at top of viewport
-    //   Section pins at 'top top' (already fully built), holds, then dismantles slowly
-
-    const buildTl = gsap.timeline({
-      defaults: { ease: 'none' },
-      scrollTrigger: {
-        trigger: section,
-        start: 'top 85%',
-        end: 'top top',
-        scrub: 0.5,
-      },
-    });
-
-    const dismantleTl = gsap.timeline({
-      defaults: { ease: 'none' },
-      scrollTrigger: {
-        trigger: section,
-        start: 'top top',
-        end: '+=160%',
-        pin: true,
-        scrub: 1.2,
-      },
-    });
-
-    // ── BUILD (Phase 1) — all 4 cols assemble during viewport entry ──
-    cols.forEach((col, i) => {
-      const wrap   = col.querySelector('.practice__icon-wrap');
-      const shapes = wrap
-        ? Array.from(wrap.querySelectorAll('path, circle, rect, ellipse, polygon, polyline'))
-        : [];
-      const num  = col.querySelector('.practice__num');
-      const name = col.querySelector('.practice__name');
-      const tag  = col.querySelector('.practice__tag');
-      const rule = col.querySelector('.practice__rule');
-
-      const n    = shapes.length;
-      const each = n <= 1 ? 0 : Math.max(0.005, 0.20 / n);
-      const span = each * Math.max(0, n - 1);
-      const o    = i * 0.06;
-
-      if (rule) buildTl.to(rule, { scaleX: 1, duration: 0.08 }, o);
-
-      if (n) {
-        buildTl.to(shapes, {
-          attr: { 'stroke-dashoffset': 0 },
-          duration: 0.08,
-          stagger: { each, from: 'start' },
-        }, o + 0.02);
-
-        buildTl.to(shapes, {
-          attr: { 'fill-opacity': 1 },
-          duration: 0.06,
-          stagger: { each, from: 'start' },
-        }, o + 0.02 + span * 0.30);
-
-        buildTl.to(shapes, {
-          attr: { 'stroke-width': 0 },
-          duration: 0.05,
-          stagger: { each, from: 'start' },
-        }, o + 0.02 + span * 0.65);
-      }
-
-      const textAt = o + 0.02 + span + 0.08;
-      if (num)  buildTl.to(num,  { opacity: 1, y: 0, duration: 0.06 }, textAt);
-      if (name) buildTl.to(name, { opacity: 1, y: 0, duration: 0.06 }, textAt + 0.04);
-      if (tag)  buildTl.to(tag,  { opacity: 1, y: 0, duration: 0.06 }, textAt + 0.08);
-    });
-
-    // ── LOCK (Phase 2) — brief hold before dismantle ──
-    dismantleTl.to(grid, { opacity: 1, duration: 0.01 }, 0.15);
-
-    // ── DISMANTLE (Phase 2) — slow, right-to-left ──
-    cols.forEach((col, i) => {
-      const wrap   = col.querySelector('.practice__icon-wrap');
-      const shapes = wrap
-        ? Array.from(wrap.querySelectorAll('path, circle, rect, ellipse, polygon, polyline'))
-        : [];
-      const num  = col.querySelector('.practice__num');
-      const name = col.querySelector('.practice__name');
-      const tag  = col.querySelector('.practice__tag');
-      const rule = col.querySelector('.practice__rule');
-
-      const n    = shapes.length;
-      const each = n <= 1 ? 0 : Math.max(0.005, 0.20 / n);
-      const span = each * Math.max(0, n - 1);
-      const o    = 0.15 + (3 - i) * 0.18;
-
-      if (tag)  dismantleTl.to(tag,  { opacity: 0, y: -8, duration: 0.10 }, o);
-      if (name) dismantleTl.to(name, { opacity: 0, y: -8, duration: 0.10 }, o + 0.05);
-      if (num)  dismantleTl.to(num,  { opacity: 0, y: -8, duration: 0.10 }, o + 0.10);
-      if (rule) dismantleTl.to(rule, { scaleX: 0, duration: 0.12 }, o + 0.10);
-
-      if (n) {
-        dismantleTl.to(shapes, {
-          attr: { 'fill-opacity': 0 },
-          duration: 0.40,
-          stagger: { each, from: 'end' },
-        }, o + 0.18);
-      }
-    });
-
-    ScrollTrigger.refresh();
-  }
-
-  /* ═══════════════════════════════════════════════════════════
      INIT
      ═══════════════════════════════════════════════════════════ */
   function init() {
     initNav();
     loadFrames();
     initReveals();
-    initConceptReveal();
-    initProcess();
     initWorks();
     initLightbox();
     initMarquee();

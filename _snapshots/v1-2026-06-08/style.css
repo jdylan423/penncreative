@@ -398,7 +398,7 @@ ul { list-style: none; }
 
 /* Section labels */
 .section-label {
-  font-size: clamp(0.75rem, 0.9vw, 1rem);
+  font-size: 0.65rem;
   font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -857,11 +857,10 @@ ul { list-style: none; }
 }
 
 .practice__icon-wrap {
-  margin-bottom: clamp(1.2rem, 2vw, 2rem);
-  width: clamp(72px, 9vw, 120px);
-  height: clamp(72px, 9vw, 120px);
+  margin-bottom: clamp(0.9rem, 1.5vw, 1.5rem);
+  width: clamp(26px, 2.8vw, 38px);
+  height: clamp(26px, 2.8vw, 38px);
   color: rgba(255, 255, 255, 0.42);
-  position: relative;
 }
 
 .practice__icon-svg {
@@ -869,17 +868,6 @@ ul { list-style: none; }
   height: 100%;
   display: block;
   overflow: visible;
-  fill: white;
-}
-
-.practice__icon-svg path,
-.practice__icon-svg circle,
-.practice__icon-svg rect,
-.practice__icon-svg polygon,
-.practice__icon-svg ellipse,
-.practice__icon-svg line,
-.practice__icon-svg polyline {
-  transform-origin: center;
 }
 
 .practice__rule {

@@ -590,171 +590,62 @@
   /* ═══════════════════════════════════════════════════════════
      PROCESS — Editorial row animations
      ═══════════════════════════════════════════════════════════ */
-  async function initProcess() {
-    const section = document.querySelector('.process');
-    const grid    = document.querySelector('.practice__grid');
-    if (!grid || !section) return;
+  function initProcess() {
+    const grid = document.querySelector('.practice__grid');
+    if (!grid) return;
 
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-    // ── 1. Fetch & inject SVGs ──────────────────────────────────
-    const wraps = grid.querySelectorAll('.practice__icon-wrap[data-icon]');
-
-    await Promise.all(Array.from(wraps).map(async (wrap) => {
-      const key = wrap.dataset.icon;
-      try {
-        const res  = await fetch(`brand_assets/icons/${key}.svg`);
-        const text = await res.text();
-        const parser = new DOMParser();
-        const doc    = parser.parseFromString(text, 'image/svg+xml');
-        const svg    = doc.querySelector('svg');
-        if (!svg) return;
-        svg.setAttribute('aria-hidden', 'true');
-        svg.style.width   = '100%';
-        svg.style.height  = '100%';
-        svg.style.display = 'block';
-        wrap.appendChild(svg);
-      } catch (e) {
-        console.warn('Icon load failed:', key, e);
+    // Helper: get stroke length for any SVG shape
+    function svgLen(el) {
+      if (typeof el.getTotalLength === 'function') return el.getTotalLength();
+      if (el.tagName === 'circle') return 2 * Math.PI * parseFloat(el.getAttribute('r'));
+      if (el.tagName === 'line') {
+        const dx = parseFloat(el.getAttribute('x2')) - parseFloat(el.getAttribute('x1'));
+        const dy = parseFloat(el.getAttribute('y2')) - parseFloat(el.getAttribute('y1'));
+        return Math.sqrt(dx * dx + dy * dy);
       }
-    }));
+      return 100;
+    }
 
-    if (reduced) return;
+    // Pre-set all icon paths to invisible (dashoffset = dashlength)
+    grid.querySelectorAll('.practice__icon-svg path, .practice__icon-svg line, .practice__icon-svg circle').forEach(el => {
+      const len = svgLen(el);
+      gsap.set(el, { strokeDasharray: len, strokeDashoffset: len });
+    });
 
     const cols = grid.querySelectorAll('.practice__col');
 
-    // ── 2. Initial hidden state ──────────────────────────────────
-    cols.forEach(col => {
-      const rule = col.querySelector('.practice__rule');
-      const num  = col.querySelector('.practice__num');
-      const name = col.querySelector('.practice__name');
-      const tag  = col.querySelector('.practice__tag');
-      gsap.set([num, name, tag], { opacity: 0, y: 10 });
-      if (rule) gsap.set(rule, { scaleX: 0 });
-    });
-
-    // Stroke-draw setup: fill starts transparent, stroke draws first
-    wraps.forEach(wrap => {
-      wrap.querySelectorAll('path, circle, rect, ellipse, polygon, polyline').forEach(el => {
-        const len = typeof el.getTotalLength === 'function' ? el.getTotalLength() : 400;
-        el.setAttribute('fill', 'white');
-        el.setAttribute('fill-opacity', '0');
-        el.setAttribute('stroke', 'white');
-        el.setAttribute('stroke-width', '1');
-        el.setAttribute('stroke-linecap', 'round');
-        el.setAttribute('stroke-linejoin', 'round');
-        el.setAttribute('stroke-dasharray', len);
-        el.setAttribute('stroke-dashoffset', len);
-      });
-    });
-
-    // ── 3. TWO-PHASE SCROLL ANIMATION ───────────────────────────
-    // Phase 1 (no pin): BUILD fires as section enters viewport
-    //   Starts when section top hits 85% of viewport, completes at 'top top'
-    //   No empty dead scroll — icons draw immediately as section comes into view
-    //
-    // Phase 2 (pin): LOCK + DISMANTLE at top of viewport
-    //   Section pins at 'top top' (already fully built), holds, then dismantles slowly
-
-    const buildTl = gsap.timeline({
-      defaults: { ease: 'none' },
+    // One timeline, one trigger — stagger cascades via absolute offsets
+    const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: section,
-        start: 'top 85%',
-        end: 'top top',
-        scrub: 0.5,
+        trigger: grid,
+        start: 'top 78%',
       },
     });
 
-    const dismantleTl = gsap.timeline({
-      defaults: { ease: 'none' },
-      scrollTrigger: {
-        trigger: section,
-        start: 'top top',
-        end: '+=160%',
-        pin: true,
-        scrub: 1.2,
-      },
-    });
-
-    // ── BUILD (Phase 1) — all 4 cols assemble during viewport entry ──
     cols.forEach((col, i) => {
-      const wrap   = col.querySelector('.practice__icon-wrap');
-      const shapes = wrap
-        ? Array.from(wrap.querySelectorAll('path, circle, rect, ellipse, polygon, polyline'))
-        : [];
-      const num  = col.querySelector('.practice__num');
-      const name = col.querySelector('.practice__name');
-      const tag  = col.querySelector('.practice__tag');
-      const rule = col.querySelector('.practice__rule');
+      const rule  = col.querySelector('.practice__rule');
+      const icon  = col.querySelectorAll('.practice__icon-svg path, .practice__icon-svg line, .practice__icon-svg circle');
+      const num   = col.querySelector('.practice__num');
+      const name  = col.querySelector('.practice__name');
+      const tag   = col.querySelector('.practice__tag');
+      const o     = i * 0.14; // column stagger offset
 
-      const n    = shapes.length;
-      const each = n <= 1 ? 0 : Math.max(0.005, 0.20 / n);
-      const span = each * Math.max(0, n - 1);
-      const o    = i * 0.06;
-
-      if (rule) buildTl.to(rule, { scaleX: 1, duration: 0.08 }, o);
-
-      if (n) {
-        buildTl.to(shapes, {
-          attr: { 'stroke-dashoffset': 0 },
-          duration: 0.08,
-          stagger: { each, from: 'start' },
-        }, o + 0.02);
-
-        buildTl.to(shapes, {
-          attr: { 'fill-opacity': 1 },
-          duration: 0.06,
-          stagger: { each, from: 'start' },
-        }, o + 0.02 + span * 0.30);
-
-        buildTl.to(shapes, {
-          attr: { 'stroke-width': 0 },
-          duration: 0.05,
-          stagger: { each, from: 'start' },
-        }, o + 0.02 + span * 0.65);
-      }
-
-      const textAt = o + 0.02 + span + 0.08;
-      if (num)  buildTl.to(num,  { opacity: 1, y: 0, duration: 0.06 }, textAt);
-      if (name) buildTl.to(name, { opacity: 1, y: 0, duration: 0.06 }, textAt + 0.04);
-      if (tag)  buildTl.to(tag,  { opacity: 1, y: 0, duration: 0.06 }, textAt + 0.08);
+      // Rule draws + icon paths draw in simultaneously
+      tl
+        .to(rule, { scaleX: 1, duration: 0.65, ease: 'power3.inOut' }, o)
+        .to(icon,  {
+          strokeDashoffset: 0,
+          duration: 0.7,
+          stagger: 0.06,
+          ease: 'power2.inOut',
+        }, o)
+        // Text cascade after icon starts drawing
+        .to(num,  { opacity: 1, y: 0, duration: 0.38, ease: 'power2.out' }, o + 0.24)
+        .to(name, { opacity: 1, y: 0, duration: 0.55, ease: 'power2.out' }, o + 0.34)
+        .to(tag,  { opacity: 1, y: 0, duration: 0.46, ease: 'power2.out' }, o + 0.50);
     });
-
-    // ── LOCK (Phase 2) — brief hold before dismantle ──
-    dismantleTl.to(grid, { opacity: 1, duration: 0.01 }, 0.15);
-
-    // ── DISMANTLE (Phase 2) — slow, right-to-left ──
-    cols.forEach((col, i) => {
-      const wrap   = col.querySelector('.practice__icon-wrap');
-      const shapes = wrap
-        ? Array.from(wrap.querySelectorAll('path, circle, rect, ellipse, polygon, polyline'))
-        : [];
-      const num  = col.querySelector('.practice__num');
-      const name = col.querySelector('.practice__name');
-      const tag  = col.querySelector('.practice__tag');
-      const rule = col.querySelector('.practice__rule');
-
-      const n    = shapes.length;
-      const each = n <= 1 ? 0 : Math.max(0.005, 0.20 / n);
-      const span = each * Math.max(0, n - 1);
-      const o    = 0.15 + (3 - i) * 0.18;
-
-      if (tag)  dismantleTl.to(tag,  { opacity: 0, y: -8, duration: 0.10 }, o);
-      if (name) dismantleTl.to(name, { opacity: 0, y: -8, duration: 0.10 }, o + 0.05);
-      if (num)  dismantleTl.to(num,  { opacity: 0, y: -8, duration: 0.10 }, o + 0.10);
-      if (rule) dismantleTl.to(rule, { scaleX: 0, duration: 0.12 }, o + 0.10);
-
-      if (n) {
-        dismantleTl.to(shapes, {
-          attr: { 'fill-opacity': 0 },
-          duration: 0.40,
-          stagger: { each, from: 'end' },
-        }, o + 0.18);
-      }
-    });
-
-    ScrollTrigger.refresh();
   }
 
   /* ═══════════════════════════════════════════════════════════

@@ -111,9 +111,9 @@
   <!-- Fonts + Styles -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" as="style">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=35">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" as="style">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
@@ -134,6 +134,7 @@
       <ul class="nav__links" id="nav-links">
         <li><a href="#work">Work</a></li>
         <li><a href="#about">About</a></li>
+        <li><a href="#process">Process</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
       <div class="nav__social">
@@ -154,6 +155,7 @@
   <div class="nav__mobile-overlay" id="mobile-overlay">
     <a href="#work" class="mobile-link">Work</a>
     <a href="#about" class="mobile-link">About</a>
+    <a href="#process" class="mobile-link">Process</a>
     <a href="#contact" class="mobile-link">Contact</a>
     <div class="mobile-social">
       <a href="https://instagram.com/jeremypenn" target="_blank" rel="noopener" aria-label="Instagram">
@@ -171,6 +173,13 @@
 
   <div id="hero-text">
     <h1 class="hero-name">Jeremy Penn<span class="sr-only">, Senior Creative Director &amp; Brand Strategist</span></h1>
+    <div class="subtitle-wrap">
+      <span class="subtitle is-active" data-index="0">Creative Director</span>
+      <span class="subtitle" data-index="1">Cultural Strategist</span>
+      <span class="subtitle" data-index="2">Artist</span>
+      <span class="subtitle" data-index="3">Product Designer</span>
+      <span class="subtitle" data-index="4">Keep scrolling because I am out of titles</span>
+    </div>
   </div>
 
   <div id="scroll-cue">
@@ -191,14 +200,20 @@
   <!-- SITE CONTENT -->
   <main class="site-content">
 
-    <!-- CONCEPT REVEAL — pinned scroll sequence -->
-    <section id="concept-reveal" aria-label="Creative philosophy">
-      <div class="concept-reveal__stage">
-        <h2 class="concept-reveal__brand">Concept to Culture</h2>
-        <div class="concept-reveal__lines">
-          <p class="concept-reveal__line">An idea isn't finished when it's conceived.</p>
-          <p class="concept-reveal__line">It's finished when it becomes felt.</p>
-          <p class="concept-reveal__line">The distance between those two moments is the work.</p>
+    <!-- ABOUT -->
+    <section id="about" class="about">
+      <div class="container">
+        <span class="section-label">About</span>
+        <h2 class="about__heading" id="about-heading">Concept to Culture</h2>
+        <div class="about__inner">
+          <div class="about__text-col">
+            <p class="about__body">From concept to culture, I've spent more than 20 years building creative systems, shaping products, leading high-output teams, and crafting experiences that endure.</p>
+            <p class="about__body">My foundation is in <a href="https://jeremypenn.com" class="about__link">fine art</a>, so I think in terms of form, weight, and tension before features. That sensibility shapes everything I build, and is often why the work feels considered rather than assembled.</p>
+            <p class="about__body">Grounded in a deep understanding of human behavior and cultural signals, I spot shifts early and use emerging technologies to create work people return to, talk about, and remember.</p>
+          </div>
+          <div class="about__photo-col">
+            <img src="jeremy-penn-creative-director.png" alt="Jeremy Penn, Senior Creative Director and Cultural Strategist specializing in experiential design and consumer technology, based in New York" class="about__photo" loading="lazy">
+          </div>
         </div>
       </div>
     </section>
@@ -210,54 +225,56 @@
       </div>
       <div class="marquee-row marquee-row--1">
         <div class="marquee-inner">
-          <img loading="lazy" src="brand_assets/new site logos white/lululemon-logo.png" alt="Lululemon, brand partner of Jeremy Penn Creative Studio">
-          <img loading="lazy" src="brand_assets/new site logos white/saks.png" alt="Saks Fifth Avenue, luxury retail creative direction by Jeremy Penn">
-          <img loading="lazy" src="brand_assets/new site logos white/coach-logo.png" alt="Coach, luxury fashion brand partner">
-          <img loading="lazy" src="brand_assets/new site logos white/hugo-boss-logo.png" alt="Hugo Boss, premium fashion brand partner">
-          <img loading="lazy" src="brand_assets/new site logos white/Maxim_Magazine_Logo.png" alt="Maxim Magazine, media and publishing brand partner">
-          <img loading="lazy" src="brand_assets/new site logos white/amex.png" alt="American Express, financial services brand partner">
-          <img loading="lazy" src="brand_assets/new site logos white/UMG.png" alt="Universal Music Group, entertainment industry brand partner">
-          <img loading="lazy" src="brand_assets/new site logos white/Lowes_Hotels_Logos.png" alt="Loews Hotels, hospitality brand partner">
-          <img loading="lazy" src="brand_assets/new site logos white/missoni-logo.png" alt="Missoni, Italian luxury fashion brand partner">
-          <img loading="lazy" src="brand_assets/new site logos white/tommy-hilfiger-logo.png" alt="Tommy Hilfiger, fashion and lifestyle brand partner">
-          <img loading="lazy" src="brand_assets/new site logos white/redbull-logo.png" alt="Red Bull, energy and action sports brand partner">
-          <img loading="lazy" src="brand_assets/new site logos white/jarritos-logo.png" alt="Jarritos, beverage brand partner">
+          <img loading="lazy" src="brand_assets/new site logos black/lululemon-logo.png" alt="Lululemon, brand partner of Jeremy Penn Creative Studio">
+          <img loading="lazy" src="brand_assets/new site logos black/Saks-Fifth-Avenue-Logo.png" alt="Saks Fifth Avenue, luxury retail creative direction by Jeremy Penn">
+          <img loading="lazy" src="brand_assets/new site logos black/Coach-logo.png" alt="Coach, luxury fashion brand partner">
+          <img loading="lazy" src="brand_assets/new site logos black/Hugo-Boss-Logo-before-2021.png" alt="Hugo Boss, premium fashion brand partner">
+          <img loading="lazy" src="brand_assets/new site logos black/Maxim_Magazine_Logo.png" alt="Maxim Magazine, media and publishing brand partner">
+          <img loading="lazy" src="brand_assets/new site logos black/amex.png" alt="American Express, financial services brand partner">
+          <img loading="lazy" src="brand_assets/new site logos black/UMG.AS_BIG.png" alt="Universal Music Group, entertainment industry brand partner">
+          <img loading="lazy" src="brand_assets/new site logos black/ED.png" alt="Ed Hardy, fashion and lifestyle brand partner">
+          <img loading="lazy" src="brand_assets/new site logos black/Lowes_Hotels_Logos.png" alt="Loews Hotels, hospitality brand partner">
+          <img loading="lazy" src="brand_assets/new site logos black/missoni-logo.png" alt="Missoni, Italian luxury fashion brand partner">
+          <img loading="lazy" src="brand_assets/new site logos black/tommy-hilfiger-logo.jpg" alt="Tommy Hilfiger, fashion and lifestyle brand partner">
+          <img loading="lazy" src="brand_assets/new site logos black/redbull-logo.jpg" alt="Red Bull, energy and action sports brand partner">
+          <img loading="lazy" src="brand_assets/new site logos black/jarritos-logo.png" alt="Jarritos, beverage brand partner">
           <!-- duplicate for seamless loop -->
-          <img loading="lazy" src="brand_assets/new site logos white/lululemon-logo.png" alt="Lululemon, brand partner of Jeremy Penn Creative Studio">
-          <img loading="lazy" src="brand_assets/new site logos white/saks.png" alt="Saks Fifth Avenue, luxury retail creative direction by Jeremy Penn">
-          <img loading="lazy" src="brand_assets/new site logos white/coach-logo.png" alt="Coach, luxury fashion brand partner">
-          <img loading="lazy" src="brand_assets/new site logos white/hugo-boss-logo.png" alt="Hugo Boss, premium fashion brand partner">
-          <img loading="lazy" src="brand_assets/new site logos white/Maxim_Magazine_Logo.png" alt="Maxim Magazine, media and publishing brand partner">
-          <img loading="lazy" src="brand_assets/new site logos white/amex.png" alt="American Express, financial services brand partner">
-          <img loading="lazy" src="brand_assets/new site logos white/UMG.png" alt="Universal Music Group, entertainment industry brand partner">
-          <img loading="lazy" src="brand_assets/new site logos white/Lowes_Hotels_Logos.png" alt="Loews Hotels, hospitality brand partner">
-          <img loading="lazy" src="brand_assets/new site logos white/missoni-logo.png" alt="Missoni, Italian luxury fashion brand partner">
-          <img loading="lazy" src="brand_assets/new site logos white/tommy-hilfiger-logo.png" alt="Tommy Hilfiger, fashion and lifestyle brand partner">
-          <img loading="lazy" src="brand_assets/new site logos white/redbull-logo.png" alt="Red Bull, energy and action sports brand partner">
-          <img loading="lazy" src="brand_assets/new site logos white/jarritos-logo.png" alt="Jarritos, beverage brand partner">
+          <img loading="lazy" src="brand_assets/new site logos black/lululemon-logo.png" alt="Lululemon, brand partner of Jeremy Penn Creative Studio">
+          <img loading="lazy" src="brand_assets/new site logos black/Saks-Fifth-Avenue-Logo.png" alt="Saks Fifth Avenue, luxury retail creative direction by Jeremy Penn">
+          <img loading="lazy" src="brand_assets/new site logos black/Coach-logo.png" alt="Coach, luxury fashion brand partner">
+          <img loading="lazy" src="brand_assets/new site logos black/Hugo-Boss-Logo-before-2021.png" alt="Hugo Boss, premium fashion brand partner">
+          <img loading="lazy" src="brand_assets/new site logos black/Maxim_Magazine_Logo.png" alt="Maxim Magazine, media and publishing brand partner">
+          <img loading="lazy" src="brand_assets/new site logos black/amex.png" alt="American Express, financial services brand partner">
+          <img loading="lazy" src="brand_assets/new site logos black/UMG.AS_BIG.png" alt="Universal Music Group, entertainment industry brand partner">
+          <img loading="lazy" src="brand_assets/new site logos black/ED.png" alt="Ed Hardy, fashion and lifestyle brand partner">
+          <img loading="lazy" src="brand_assets/new site logos black/Lowes_Hotels_Logos.png" alt="Loews Hotels, hospitality brand partner">
+          <img loading="lazy" src="brand_assets/new site logos black/missoni-logo.png" alt="Missoni, Italian luxury fashion brand partner">
+          <img loading="lazy" src="brand_assets/new site logos black/tommy-hilfiger-logo.jpg" alt="Tommy Hilfiger, fashion and lifestyle brand partner">
+          <img loading="lazy" src="brand_assets/new site logos black/redbull-logo.jpg" alt="Red Bull, energy and action sports brand partner">
+          <img loading="lazy" src="brand_assets/new site logos black/jarritos-logo.png" alt="Jarritos, beverage brand partner">
         </div>
       </div>
       <div class="marquee-row marquee-row--2">
         <div class="marquee-inner">
-          <img loading="lazy" src="brand_assets/new site logos white/tretorn-logo.png" alt="Tretorn, footwear and lifestyle brand partner">
-          <img loading="lazy" src="brand_assets/new site logos white/cotton-logo.png" alt="Cotton Incorporated, textile industry brand partner">
-          <img loading="lazy" src="brand_assets/new site logos white/helix-logo.png" alt="Helix, technology brand partner">
-          <img loading="lazy" src="brand_assets/new site logos white/ledger.png" alt="Ledger, blockchain and crypto hardware brand partner">
-          <img loading="lazy" src="brand_assets/new site logos white/stake.png" alt="Stake, fintech brand partner">
-          <img loading="lazy" src="brand_assets/new site logos white/RKD-logo.png" alt="RKD, gamification and technology venture">
-          <img loading="lazy" src="brand_assets/new site logos white/inverus-logo.png" alt="Inverus, Web3 and blockchain brand partner">
-          <img loading="lazy" src="brand_assets/new site logos white/gldc.png" alt="Good Luck Dry Cleaners, cultural retail concept by Jeremy Penn">
-          <img loading="lazy" src="brand_assets/new site logos white/schutz-logo.png" alt="Schutz, luxury footwear and fashion brand partner">
+          <img loading="lazy" src="brand_assets/new site logos black/tretorn-logo.png" alt="Tretorn, footwear and lifestyle brand partner">
+          <img loading="lazy" src="brand_assets/new site logos black/cotton-logo.png" alt="Cotton Incorporated, textile industry brand partner">
+          <img loading="lazy" src="brand_assets/new site logos black/helix-logo.png" alt="Helix, technology brand partner">
+          <img loading="lazy" src="brand_assets/new site logos black/Ledger-700x700.png" alt="Ledger, blockchain and crypto hardware brand partner">
+          <img loading="lazy" src="brand_assets/new site logos black/stake-logo-png_seeklogo-436813.png" alt="Stake, fintech brand partner">
+          <img loading="lazy" src="brand_assets/new site logos black/RKD-logo.png" alt="RKD, gamification and technology venture">
+          <img loading="lazy" src="brand_assets/new site logos black/inverus-logo.png" alt="Inverus, Web3 and blockchain brand partner">
+          <img loading="lazy" src="brand_assets/new site logos black/Good Luck Dry Cleaners Logo copy.jpeg" alt="Good Luck Dry Cleaners, cultural retail concept by Jeremy Penn">
+          <img loading="lazy" src="brand_assets/new site logos black/schutz-logo.jpg" alt="Schutz, luxury footwear and fashion brand partner">
           <!-- duplicate -->
-          <img loading="lazy" src="brand_assets/new site logos white/tretorn-logo.png" alt="Tretorn, footwear and lifestyle brand partner">
-          <img loading="lazy" src="brand_assets/new site logos white/cotton-logo.png" alt="Cotton Incorporated, textile industry brand partner">
-          <img loading="lazy" src="brand_assets/new site logos white/helix-logo.png" alt="Helix, technology brand partner">
-          <img loading="lazy" src="brand_assets/new site logos white/ledger.png" alt="Ledger, blockchain and crypto hardware brand partner">
-          <img loading="lazy" src="brand_assets/new site logos white/stake.png" alt="Stake, fintech brand partner">
-          <img loading="lazy" src="brand_assets/new site logos white/RKD-logo.png" alt="RKD, gamification and technology venture">
-          <img loading="lazy" src="brand_assets/new site logos white/inverus-logo.png" alt="Inverus, Web3 and blockchain brand partner">
-          <img loading="lazy" src="brand_assets/new site logos white/gldc.png" alt="Good Luck Dry Cleaners, cultural retail concept by Jeremy Penn">
-          <img loading="lazy" src="brand_assets/new site logos white/schutz-logo.png" alt="Schutz, luxury footwear and fashion brand partner">
+          <img loading="lazy" src="brand_assets/new site logos black/tretorn-logo.png" alt="Tretorn, footwear and lifestyle brand partner">
+          <img loading="lazy" src="brand_assets/new site logos black/cotton-logo.png" alt="Cotton Incorporated, textile industry brand partner">
+          <img loading="lazy" src="brand_assets/new site logos black/helix-logo.png" alt="Helix, technology brand partner">
+          <img loading="lazy" src="brand_assets/new site logos black/Ledger-700x700.png" alt="Ledger, blockchain and crypto hardware brand partner">
+          <img loading="lazy" src="brand_assets/new site logos black/stake-logo-png_seeklogo-436813.png" alt="Stake, fintech brand partner">
+          <img loading="lazy" src="brand_assets/new site logos black/RKD-logo.png" alt="RKD, gamification and technology venture">
+          <img loading="lazy" src="brand_assets/new site logos black/inverus-logo.png" alt="Inverus, Web3 and blockchain brand partner">
+          <img loading="lazy" src="brand_assets/new site logos black/Good Luck Dry Cleaners Logo copy.jpeg" alt="Good Luck Dry Cleaners, cultural retail concept by Jeremy Penn">
+          <img loading="lazy" src="brand_assets/new site logos black/schutz-logo.jpg" alt="Schutz, luxury footwear and fashion brand partner">
         </div>
       </div>
     </section>
@@ -454,64 +471,46 @@ Following its success, I assembled an unprecedented team, bringing together lead
       </div>
     </section>
 
-    <!-- ABOUT -->
-    <section id="about" class="about">
-      <div class="container">
-        <span class="section-label">About</span>
-        <h2 class="about__heading" id="about-heading">Jeremy Penn</h2>
-        <div class="about__inner">
-          <div class="about__text-col">
-            <p class="about__body">Long before directing creative, shaping experiences, or designing technology, I thought about form, weight, and tension.</p>
-            <p class="about__body">Fine art was my foundation. Fifteen years as a working artist taught me how meaning is constructed, how ideas take shape, and why certain things stay with people while others fade.</p>
-            <p class="about__body">Those same principles now inform everything I build. Over the last two decades, I've used them to shape brands, products, experiences, and emerging technologies, helping turn ideas into things that earn a place in the world.</p>
-            <p class="about__body">The work tends to feel considered rather than assembled. That's not an accident.</p>
-          </div>
-          <div class="about__photo-col">
-            <img src="jeremy-penn-creative-director.png" alt="Jeremy Penn, Senior Creative Director and Cultural Strategist specializing in experiential design and consumer technology, based in New York" class="about__photo" loading="lazy">
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- PRACTICE -->
+    <!-- PROCESS -->
     <section id="process" class="process">
       <div class="container">
-        <span class="section-label">Brand Practice</span>
-      </div>
-      <div class="practice__grid">
+        <span class="section-label">Process</span>
+        <div class="process__grid">
 
-        <div class="practice__col">
-          <div class="practice__rule"></div>
-          <div class="practice__icon-wrap" aria-hidden="true" data-icon="story"></div>
-          <span class="practice__num" aria-hidden="true">01</span>
-          <h3 class="practice__name">Storytelling</h3>
-          <p class="practice__tag">gives it meaning.</p>
+          <!-- ─── PROCESS CARD 1 ─────────────────────────────────────── -->
+          <div class="process-card">
+            <video class="process-card__video" autoplay muted loop playsinline>
+              <source src="animations/process-01.webm" type="video/webm">
+            </video>
+            <!-- EDIT heading below -->
+            <h3 class="process-card__heading">Read the Signal</h3>
+            <!-- EDIT body text below -->
+            <p class="process-card__body">Identify the cultural and human insight that makes the work matter. Before strategy, before execution, understand what's actually happening beneath the surface.</p>
+          </div>
+
+          <!-- ─── PROCESS CARD 2 ─────────────────────────────────────── -->
+          <div class="process-card">
+            <video class="process-card__video" autoplay muted loop playsinline>
+              <source src="animations/process-02.webm" type="video/webm">
+            </video>
+            <!-- EDIT heading below -->
+            <h3 class="process-card__heading">Build the System</h3>
+            <!-- EDIT body text below -->
+            <p class="process-card__body">Design scalable brand experiences that connect across touchpoints. Systems, not one-offs. Frameworks that flex without breaking.</p>
+          </div>
+
+          <!-- ─── PROCESS CARD 3 ─────────────────────────────────────── -->
+          <div class="process-card">
+            <video class="process-card__video" autoplay muted loop playsinline>
+              <source src="animations/process-03.webm" type="video/webm">
+            </video>
+            <!-- EDIT heading below -->
+            <h3 class="process-card__heading">Create Resonance</h3>
+            <!-- EDIT body text below -->
+            <p class="process-card__body">Shape work that lasts through relevance, affinity, and cultural impact. Not just attention, connection. Not just reach, resonance.</p>
+          </div>
+
         </div>
-
-        <div class="practice__col">
-          <div class="practice__rule"></div>
-          <div class="practice__icon-wrap" aria-hidden="true" data-icon="art"></div>
-          <span class="practice__num" aria-hidden="true">02</span>
-          <h3 class="practice__name">Art Direction</h3>
-          <p class="practice__tag">gives it form.</p>
-        </div>
-
-        <div class="practice__col">
-          <div class="practice__rule"></div>
-          <div class="practice__icon-wrap" aria-hidden="true" data-icon="experience"></div>
-          <span class="practice__num" aria-hidden="true">03</span>
-          <h3 class="practice__name">Experience</h3>
-          <p class="practice__tag">makes it felt.</p>
-        </div>
-
-        <div class="practice__col">
-          <div class="practice__rule"></div>
-          <div class="practice__icon-wrap" aria-hidden="true" data-icon="tech"></div>
-          <span class="practice__num" aria-hidden="true">04</span>
-          <h3 class="practice__name">Technology</h3>
-          <p class="practice__tag">gives it reach.</p>
-        </div>
-
       </div>
     </section>
 
@@ -556,7 +555,7 @@ Following its success, I assembled an unprecedented team, bringing together lead
           <p class="footer__copy">&copy; 2026 Jeremy Penn Creative Studio. All rights reserved.</p>
         </div>
         <div class="footer__links">
-          <a href="https://jeremypennart.com" target="_blank" rel="noopener">Fine Art Studio</a>
+          <a href="https://jeremypenn.com" target="_blank" rel="noopener">Fine Art Studio</a>
           <a href="https://instagram.com/jeremypenn" target="_blank" rel="noopener">Instagram</a>
           <a href="https://linkedin.com/in/jeremypennart" target="_blank" rel="noopener">LinkedIn</a>
           <a href="privacy.html">Privacy Policy</a>
