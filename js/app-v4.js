@@ -540,62 +540,78 @@
   }
 
   /* ═══════════════════════════════════════════════════════════
-     CONCEPT REVEAL — no entry pin.
-     Lines appear during natural section entry so they arrive
-     immediately as "Concept to Culture" is already visible.
-     Brief exit pin (25vh) for clean reverse-cascade fade.
+     CONCEPT REVEAL v4 — scroll-driven Rolodex rotator.
+     Lines replace "Concept to Culture" in the same visual slot.
+     transitionHL fades out as line 1 rotates in.
      ═══════════════════════════════════════════════════════════ */
   function initConceptReveal() {
     const section = document.getElementById('concept-reveal');
     if (!section) return;
 
-    const lines = section.querySelectorAll('.concept-reveal__line');
+    const lines = Array.from(section.querySelectorAll('.concept-reveal__line'));
 
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      gsap.set(transitionHL, { opacity: 1 });
-      gsap.set([...lines], { opacity: 1, y: 0 });
+      gsap.set(transitionHL, { opacity: 0 });
+      gsap.set(lines[lines.length - 1], { xPercent: -50, opacity: 1, rotateX: 0 });
       return;
     }
 
-    // APPEAR — no pin, zero scroll debt.
-    // Fires as section rises from below; lines arrive alongside the fixed headline.
-    const buildTl = gsap.timeline({
+    // GSAP owns all transforms on lines — xPercent handles centering
+    gsap.set(lines, {
+      xPercent: -50,
+      rotateX: -75,
+      opacity: 0,
+      transformOrigin: 'center center',
+    });
+
+    const coda = lines[2].querySelector('.line-coda');
+    if (coda) gsap.set(coda, { opacity: 0, y: 10 });
+
+    const IN   = 0.20;   // rotate-in duration
+    const OUT  = 0.18;   // rotate-out duration
+    const HOLD = 0.60;   // dwell for lines 0 & 1
+    const HOLD3 = 1.10;  // longer dwell for line 3 (coda needs time)
+
+    const starts = [
+      0.10,
+      0.10 + IN + HOLD,
+      0.10 + (IN + HOLD) * 2,
+    ];
+
+    const tl = gsap.timeline({
       scrollTrigger: {
         trigger: section,
-        start: 'top 90%',
-        end: 'top 42%',
-        scrub: 0.35,
-        onEnter() { hlOwnedByConceptReveal = true; },
+        start: 'top top',
+        end: '+=360%',
+        pin: true,
+        scrub: 1.2,
+        anticipatePin: 1,
+        onEnter()     { hlOwnedByConceptReveal = true;  },
+        onLeave()     { hlOwnedByConceptReveal = false; },
+        onEnterBack() { hlOwnedByConceptReveal = true;  },
         onLeaveBack() { hlOwnedByConceptReveal = false; },
       },
     });
 
+    // "Concept to Culture" fades out as line 0 arrives
+    tl.to(transitionHL, { opacity: 0, duration: IN, ease: 'none' }, starts[0]);
+
     lines.forEach((line, i) => {
-      buildTl.fromTo(line,
-        { opacity: 0, y: 24, scale: 0.96 },
-        { opacity: 1, y: 0, scale: 1, duration: 0.18, ease: 'power2.out' },
-        i * 0.08
-      );
-    });
+      const s     = starts[i];
+      const hold  = i === 2 ? HOLD3 : HOLD;
 
-    // EXIT — brief pin at section top for clean reverse-cascade disappear
-    const exitTl = gsap.timeline({
-      scrollTrigger: {
-        trigger: section,
-        start: 'top top',
-        end: '+=25%',
-        pin: true,
-        scrub: 0.3,
-        anticipatePin: 1,
-        onLeave() { hlOwnedByConceptReveal = false; },
-        onEnterBack() { hlOwnedByConceptReveal = true; },
-      },
-    });
+      // Rotate in from below
+      tl.to(line, { rotateX: 0, opacity: 1, xPercent: -50, duration: IN, ease: 'power2.out' }, s);
 
-    [...lines].reverse().forEach((line, i) => {
-      exitTl.to(line, { opacity: 0, y: -16, duration: 0.32, ease: 'power2.in' }, i * 0.10);
+      // Coda reveal for line 3 — slides up after line settles
+      if (i === 2 && coda) {
+        tl.to(coda, { opacity: 1, y: 0, duration: 0.18, ease: 'power2.out' }, s + IN + 0.20);
+      }
+
+      // Rotate out upward into next line's entry
+      const outAt = s + IN + hold - OUT * 0.25;
+      tl.to(line, { rotateX: 75, opacity: 0, duration: OUT, ease: 'power2.in' }, outAt);
     });
-    exitTl.to(transitionHL, { opacity: 0, duration: 0.30, ease: 'none' }, 0.28);
   }
 
   /* ═══════════════════════════════════════════════════════════

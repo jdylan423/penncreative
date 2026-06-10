@@ -196,12 +196,13 @@
         whitewash.style.opacity = canvasFade;
         canvas.style.opacity = 1 - canvasFade;
 
-        // ── Concept to Culture: slide up from below as background darkens ──
-        // p=0.38→0.56: brand rises from 35vh below resting spot (38vh), fades in.
+        // ── Creative: slide up from below as background darkens ──
+        // V5: p=0.58→0.78 (was 0.38→0.56) — rises with the canvas fade so the
+        // dwell before the concept-reveal pin takes over is much shorter.
         // Single element: #transition-headline only (in-section brand stays opacity:0).
         // concept-reveal ST onEnter takes ownership via flag.
         if (!hlOwnedByConceptReveal) {
-          const slideP = Math.max(0, Math.min(1, (p - 0.38) / 0.18));
+          const slideP = Math.max(0, Math.min(1, (p - 0.58) / 0.20));
           transitionHL.style.opacity   = Math.min(1, slideP * 1.4); // opacity leads slightly
           transitionHL.style.transform = `translateY(${(1 - slideP) * 35}vh)`;
         }
@@ -540,62 +541,164 @@
   }
 
   /* ═══════════════════════════════════════════════════════════
-     CONCEPT REVEAL — no entry pin.
-     Lines appear during natural section entry so they arrive
-     immediately as "Concept to Culture" is already visible.
-     Brief exit pin (25vh) for clean reverse-cascade fade.
+     CONCEPT REVEAL v5 — scroll-built kinetic line sequence.
+     Each line gets its own reveal language:
+       L0 — word cascade: rise + de-blur, staggered from start
+       L1 — char bloom: settles in from the center outward
+       L2 — word cascade + bold coda punch ("is the work.")
+     Lines drift gently upward during their dwell so the frame
+     never feels frozen. Progress ticks track the active line.
+     Timing follows scrub-standard ratios: ~20% transition,
+     ~60% dwell per segment, ease-out in / ease-in out.
      ═══════════════════════════════════════════════════════════ */
+
+  // Split a line into word/char spans. Original text preserved for
+  // screen readers via aria-label on the parent.
+  function splitFragments(el, mode) {
+    const text = el.textContent;
+    el.setAttribute('aria-label', text);
+    const wrap = document.createElement('span');
+    wrap.setAttribute('aria-hidden', 'true');
+
+    if (mode === 'words') {
+      const words = text.split(' ');
+      words.forEach((w, i) => {
+        const s = document.createElement('span');
+        s.className = 'cr-word';
+        s.textContent = w;
+        wrap.appendChild(s);
+        if (i < words.length - 1) wrap.appendChild(document.createTextNode(' '));
+      });
+    } else {
+      Array.from(text).forEach((ch) => {
+        if (ch === ' ') {
+          wrap.appendChild(document.createTextNode(' '));
+          return;
+        }
+        const s = document.createElement('span');
+        s.className = 'cr-char';
+        s.textContent = ch;
+        wrap.appendChild(s);
+      });
+    }
+
+    el.textContent = '';
+    el.appendChild(wrap);
+    return Array.from(wrap.querySelectorAll('.cr-word, .cr-char'));
+  }
+
   function initConceptReveal() {
     const section = document.getElementById('concept-reveal');
     if (!section) return;
 
-    const lines = section.querySelectorAll('.concept-reveal__line');
+    const lines = Array.from(section.querySelectorAll('.concept-reveal__line'));
+    const hlText = transitionHL.querySelector('.transition-headline__text');
+    const ticks = Array.from(section.querySelectorAll('.concept-reveal__tick'));
 
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      gsap.set(transitionHL, { opacity: 1 });
-      gsap.set([...lines], { opacity: 1, y: 0 });
+      gsap.set(transitionHL, { opacity: 0 });
+      const last = lines[lines.length - 1];
+      gsap.set(last, { opacity: 1 });
+      const rmCoda = last.querySelector('.line-coda');
+      if (rmCoda) gsap.set(rmCoda, { opacity: 1, y: 0 });
       return;
     }
 
-    // APPEAR — no pin, zero scroll debt.
-    // Fires as section rises from below; lines arrive alongside the fixed headline.
-    const buildTl = gsap.timeline({
-      scrollTrigger: {
-        trigger: section,
-        start: 'top 90%',
-        end: 'top 42%',
-        scrub: 0.35,
-        onEnter() { hlOwnedByConceptReveal = true; },
-        onLeaveBack() { hlOwnedByConceptReveal = false; },
-      },
-    });
+    // ── Split ──
+    const words0 = splitFragments(lines[0], 'words');
+    const chars1 = splitFragments(lines[1], 'chars');
+    const words2 = splitFragments(lines[2].querySelector('.line-main'), 'words');
+    const coda   = lines[2].querySelector('.line-coda');
 
-    lines.forEach((line, i) => {
-      buildTl.fromTo(line,
-        { opacity: 0, y: 24, scale: 0.96 },
-        { opacity: 1, y: 0, scale: 1, duration: 0.18, ease: 'power2.out' },
-        i * 0.08
-      );
-    });
+    // Lines themselves stay visible; fragments carry the animation.
+    gsap.set(lines, { opacity: 1, transformOrigin: 'center center' });
+    gsap.set(words0, { opacity: 0, yPercent: 70, filter: 'blur(6px)' });
+    gsap.set(chars1, { opacity: 0, yPercent: 45, rotateX: -40, transformOrigin: 'center bottom', transformPerspective: 600 });
+    gsap.set(words2, { opacity: 0, yPercent: 60, filter: 'blur(6px)' });
+    if (coda) gsap.set(coda, { opacity: 0, y: 10, scale: 1.12 });
 
-    // EXIT — brief pin at section top for clean reverse-cascade disappear
-    const exitTl = gsap.timeline({
+    /* Segment map (timeline units — 1 unit ≈ 100vh of scroll at 320% pin):
+       L0: in 0.02–0.24 · dwell → 0.78 · out 0.78–0.94
+       L1: in 0.90–1.12 · dwell → 1.78 · out 1.78–1.94
+       L2: in 1.92–2.16 · coda 2.24–2.44 · holds to unpin (no exit) */
+    const TOTAL = 3.2;
+    const L1_START = 0.90;
+    const L2_START = 1.92;
+
+    const tl = gsap.timeline({
       scrollTrigger: {
         trigger: section,
         start: 'top top',
-        end: '+=25%',
+        end: '+=320%',
         pin: true,
-        scrub: 0.3,
+        scrub: 1,
         anticipatePin: 1,
-        onLeave() { hlOwnedByConceptReveal = false; },
-        onEnterBack() { hlOwnedByConceptReveal = true; },
+        onEnter()     { hlOwnedByConceptReveal = true;  },
+        // Hard-set opacity on leave: on fast scrolls/jumps the hero's
+        // onUpdate can write opacity 1 after the scrubbed fade already
+        // finished, stranding the fixed headline over the page.
+        onLeave()     { hlOwnedByConceptReveal = false; gsap.set(transitionHL, { opacity: 0 }); },
+        onEnterBack() { hlOwnedByConceptReveal = true;  },
+        onLeaveBack() { hlOwnedByConceptReveal = false; },
+        onUpdate(self) {
+          const t = self.progress * TOTAL;
+          const active = t < L1_START ? 0 : t < L2_START ? 1 : 2;
+          ticks.forEach((tick, i) => tick.classList.toggle('is-active', i === active));
+        },
       },
     });
 
-    [...lines].reverse().forEach((line, i) => {
-      exitTl.to(line, { opacity: 0, y: -16, duration: 0.32, ease: 'power2.in' }, i * 0.10);
-    });
-    exitTl.to(transitionHL, { opacity: 0, duration: 0.30, ease: 'none' }, 0.28);
+    // ── "Creative" hands off immediately — no pre-roll dwell ──
+    tl.to(transitionHL, { opacity: 0, duration: 0.10, ease: 'none' }, 0);
+    if (hlText) {
+      tl.to(hlText, { scale: 1.08, filter: 'blur(8px)', duration: 0.10, ease: 'power1.in' }, 0);
+    }
+
+    // ── L0: word cascade ──
+    tl.to(words0, {
+      opacity: 1, yPercent: 0, filter: 'blur(0px)',
+      duration: 0.14, ease: 'power3.out',
+      stagger: { each: 0.016, from: 'start' },
+    }, 0.02);
+    // dwell drift — keeps the frame alive while the line holds
+    tl.to(lines[0], { y: -14, duration: 0.54, ease: 'none' }, 0.24);
+    // exit — words lift away with a soft blur
+    tl.to(words0, {
+      opacity: 0, yPercent: -50, filter: 'blur(4px)',
+      duration: 0.12, ease: 'power2.in',
+      stagger: { each: 0.008, from: 'start' },
+    }, 0.78);
+
+    // ── L1: char bloom from center ──
+    tl.to(chars1, {
+      opacity: 1, yPercent: 0, rotateX: 0,
+      duration: 0.14, ease: 'power3.out',
+      stagger: { each: 0.006, from: 'center' },
+    }, L1_START);
+    tl.to(lines[1], { y: -14, duration: 0.52, ease: 'none' }, 1.12);
+    tl.to(chars1, {
+      opacity: 0, yPercent: -40,
+      duration: 0.12, ease: 'power2.in',
+      stagger: { each: 0.004, from: 'center' },
+    }, 1.78);
+
+    // ── L2: word cascade, then the coda lands bold ──
+    tl.to(words2, {
+      opacity: 1, yPercent: 0, filter: 'blur(0px)',
+      duration: 0.14, ease: 'power3.out',
+      stagger: { each: 0.022, from: 'start' },
+    }, L2_START);
+    if (coda) {
+      tl.to(coda, {
+        opacity: 1, y: 0, scale: 1,
+        duration: 0.18, ease: 'power3.out',
+      }, 2.24);
+    }
+    // L2 stays on screen — section unpins with the thesis still standing.
+    tl.to(lines[2], { y: -10, duration: 0.6, ease: 'none' }, 2.5);
+
+    // pad timeline so positions map 1:1 against TOTAL
+    tl.set({}, {}, TOTAL);
   }
 
   /* ═══════════════════════════════════════════════════════════
