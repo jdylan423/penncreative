@@ -309,82 +309,90 @@
   }
 
   /* ═══════════════════════════════════════════════════════════
-     V8: SELECTED WORKS — HOVER-EXPAND GALLERY + PARALLAX
+     V7: SELECTED WORKS — SCROLL REVEALS + PARALLAX
      ═══════════════════════════════════════════════════════════ */
   function initWorksReveals() {
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const panelsEl = document.querySelector('.v8-panels');
-    if (!panelsEl) return;
+    const projects = document.querySelectorAll('.v7-project');
 
-    // Scroll-triggered entrance
-    if (!reducedMotion) {
-      const rect = panelsEl.getBoundingClientRect();
-      if (rect.top >= window.innerHeight) {
-        gsap.set(panelsEl, { opacity: 0, y: 40 });
+    projects.forEach((project) => {
+      const img = project.querySelector('.v7-project__split-image');
+      const text = project.querySelector('.v7-project__split-text');
+      const rect = project.getBoundingClientRect();
+      const alreadyVisible = rect.top < window.innerHeight;
+
+      if (alreadyVisible || reducedMotion) {
+        // Already in view or reduced motion — show immediately, no animation
+      } else {
+        // Below viewport — hide for scroll reveal
+        gsap.set(img, { opacity: 0, y: 40 });
+        gsap.set(text, { opacity: 0, y: 30 });
+
         ScrollTrigger.create({
-          trigger: panelsEl,
+          trigger: project,
           start: 'top 85%',
           once: true,
           onEnter() {
-            gsap.to(panelsEl, { opacity: 1, y: 0, duration: 1, ease: 'power3.out' });
+            gsap.to(img, { opacity: 1, y: 0, duration: 0.9, ease: 'power3.out' });
+            gsap.to(text, { opacity: 1, y: 0, duration: 0.9, delay: 0.15, ease: 'power3.out' });
           },
         });
       }
-    }
 
-    // Parallax on each panel's image
-    if (!reducedMotion) {
-      document.querySelectorAll('.v8-panel').forEach((panel) => {
-        const img = panel.querySelector('.v8-panel__image');
-        if (!img) return;
-        gsap.fromTo(img, { yPercent: -3 }, {
-          yPercent: 3,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: panel,
-            start: 'top bottom',
-            end: 'bottom top',
-            scrub: 0.6,
-          },
-        });
-      });
-    }
+      if (!reducedMotion) {
+        const imgEl = project.querySelector('.v7-project__image');
+        if (imgEl) {
+          gsap.fromTo(imgEl, { yPercent: -3 }, {
+            yPercent: 3,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: project,
+              start: 'top bottom',
+              end: 'bottom top',
+              scrub: true,
+            },
+          });
+        }
+      }
+    });
   }
 
+  /* ═══════════════════════════════════════════════════════════
+     V7: SELECTED WORKS EXPAND / COLLAPSE
+     ═══════════════════════════════════════════════════════════ */
   function initWorks() {
-    const panels = document.querySelectorAll('.v8-panel');
-    const mobile = window.innerWidth < 768;
-
-    // Mobile: tap to expand (since hover doesn't work on touch)
-    if (mobile) {
-      panels.forEach((panel) => {
-        panel.addEventListener('click', (e) => {
-          if (e.target.closest('.v8-panel__toggle')) return;
-          const wasExpanded = panel.classList.contains('is-expanded');
-          panels.forEach((p) => p.classList.remove('is-expanded'));
-          if (!wasExpanded) panel.classList.add('is-expanded');
-        });
-      });
-    }
-
-    // Toggle button opens case study
-    document.querySelectorAll('.v8-panel__toggle').forEach((btn) => {
+    document.querySelectorAll('.v7-project__toggle').forEach((btn) => {
       btn.addEventListener('click', (e) => {
         e.stopPropagation();
-        const panel = btn.closest('.v8-panel');
-        const key = panel.dataset.project;
-        const caseStudy = document.getElementById('project-' + key);
-        if (!caseStudy) return;
+        const project = btn.closest('.project');
+        const body = project.querySelector('.project-body');
+        const isOpen = project.classList.contains('is-open');
 
-        const isOpen = caseStudy.classList.contains('is-open');
-        document.querySelectorAll('.v8-case-study.is-open').forEach((cs) => {
-          if (cs !== caseStudy) closeProject(cs);
+        document.querySelectorAll('.project.is-open').forEach((p) => {
+          if (p !== project) closeProject(p);
         });
 
         if (isOpen) {
-          closeProject(caseStudy);
+          closeProject(project);
         } else {
-          openProject(caseStudy);
+          openProject(project, body);
+        }
+      });
+    });
+
+    document.querySelectorAll('.v7-project__split-image').forEach((wrap) => {
+      wrap.style.cursor = 'pointer';
+      wrap.addEventListener('click', () => {
+        const project = wrap.closest('.project');
+        const body = project.querySelector('.project-body');
+        const isOpen = project.classList.contains('is-open');
+        if (isOpen) {
+          closeProject(project);
+        } else {
+          document.querySelectorAll('.project.is-open').forEach((p) => {
+            if (p !== project) closeProject(p);
+          });
+          openProject(project, body);
         }
       });
     });
@@ -396,26 +404,17 @@
       const project = btn.closest('.project');
       if (project && project.classList.contains('is-open')) {
         closeProject(project);
-        const panelsEl = document.querySelector('.v8-panels');
-        if (panelsEl) {
-          setTimeout(() => { lenis.scrollTo(panelsEl, { offset: -80 }); }, 100);
-        }
+        setTimeout(() => {
+          lenis.scrollTo(project, { offset: -100 });
+        }, 100);
       }
     });
   });
 
-  function openProject(caseStudy) {
-    const body = caseStudy.querySelector('.project-body');
-    if (!body) return;
+  function openProject(project, body) {
+    project.classList.add('is-open');
     const inner = body.querySelector('.project-body__inner');
-
-    // Temporarily expand to measure natural height
-    body.style.height = 'auto';
-    body.style.overflow = 'hidden';
     const h = inner.offsetHeight;
-    body.style.height = '0px';
-
-    caseStudy.classList.add('is-open');
     gsap.fromTo(body, { height: 0, opacity: 0 }, {
       height: h,
       opacity: 1,
@@ -423,39 +422,22 @@
       ease: 'power3.out',
       onComplete() { body.style.height = 'auto'; },
     });
-
-    const key = caseStudy.id.replace('project-', '');
-    const panel = document.querySelector(`.v8-panel[data-project="${key}"]`);
-    if (panel) {
-      const label = panel.querySelector('.v8-panel__toggle-label');
-      if (label) label.textContent = 'Close';
-    }
-
-    setTimeout(() => { lenis.scrollTo(caseStudy, { offset: -20 }); }, 100);
+    const label = project.querySelector('.v7-project__toggle-label');
+    if (label) label.textContent = 'Close';
   }
 
-  function closeProject(caseStudy) {
-    const body = caseStudy.querySelector('.project-body');
-    if (!body) return;
+  function closeProject(project) {
+    const body = project.querySelector('.project-body');
     const h = body.offsetHeight;
-
     gsap.fromTo(body, { height: h, opacity: 1 }, {
       height: 0,
       opacity: 0,
       duration: 0.5,
       ease: 'power3.in',
-      onComplete() {
-        caseStudy.classList.remove('is-open');
-        body.style.height = '';
-      },
+      onComplete() { project.classList.remove('is-open'); },
     });
-
-    const key = caseStudy.id.replace('project-', '');
-    const panel = document.querySelector(`.v8-panel[data-project="${key}"]`);
-    if (panel) {
-      const label = panel.querySelector('.v8-panel__toggle-label');
-      if (label) label.textContent = 'View Case Study';
-    }
+    const label = project.querySelector('.v7-project__toggle-label');
+    if (label) label.textContent = 'View Case Study';
   }
 
   /* ═══════════════════════════════════════════════════════════

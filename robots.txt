@@ -1,4 +1,35 @@
 User-agent: *
 Allow: /
+Disallow: /index-v2.html
+Disallow: /index-v4.html
+Disallow: /index-v5.html
+Disallow: /index-v6.html
+Disallow: /index-v7.html
+Disallow: /index-v8.html
+Disallow: /test-animations.html
+Disallow: /skills-preview.html
+Disallow: /fine-art-link-preview.html
+
+# AI search crawlers — explicitly allowed
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Bingbot
+Allow: /
 
 Sitemap: https://jeremypenn.com/sitemap.xml

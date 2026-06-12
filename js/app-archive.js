@@ -196,13 +196,12 @@
         whitewash.style.opacity = canvasFade;
         canvas.style.opacity = 1 - canvasFade;
 
-        // ── Creative: slide up from below as background darkens ──
-        // V5: p=0.58→0.78 (was 0.38→0.56) — rises with the canvas fade so the
-        // dwell before the concept-reveal pin takes over is much shorter.
+        // ── Concept to Culture: slide up from below as background darkens ──
+        // p=0.60→0.82: brand rises from 35vh below resting spot (38vh), fades in.
         // Single element: #transition-headline only (in-section brand stays opacity:0).
         // concept-reveal ST onEnter takes ownership via flag.
         if (!hlOwnedByConceptReveal) {
-          const slideP = Math.max(0, Math.min(1, (p - 0.58) / 0.20));
+          const slideP = Math.max(0, Math.min(1, (p - 0.60) / 0.22));
           transitionHL.style.opacity   = Math.min(1, slideP * 1.4); // opacity leads slightly
           transitionHL.style.transform = `translateY(${(1 - slideP) * 35}vh)`;
         }
@@ -280,7 +279,7 @@
      ═══════════════════════════════════════════════════════════ */
   function initReveals() {
     const sections = document.querySelectorAll(
-      '.about, .process, .contact'
+      '.about, .trusted-by, .project, .process, .contact'
     );
 
     const observer = new IntersectionObserver(
@@ -296,126 +295,51 @@
     );
 
     sections.forEach((s) => observer.observe(s));
-
-    const trustedBy = document.querySelector('.trusted-by');
-    if (trustedBy) {
-      ScrollTrigger.create({
-        trigger: trustedBy,
-        start: 'top 98%',
-        once: true,
-        onEnter() { trustedBy.classList.add('in-view'); },
-      });
-    }
   }
 
   /* ═══════════════════════════════════════════════════════════
-     V8: SELECTED WORKS — HOVER-EXPAND GALLERY + PARALLAX
+     SELECTED WORKS EXPAND / COLLAPSE
      ═══════════════════════════════════════════════════════════ */
-  function initWorksReveals() {
-    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const panelsEl = document.querySelector('.v8-panels');
-    if (!panelsEl) return;
-
-    // Scroll-triggered entrance
-    if (!reducedMotion) {
-      const rect = panelsEl.getBoundingClientRect();
-      if (rect.top >= window.innerHeight) {
-        gsap.set(panelsEl, { opacity: 0, y: 40 });
-        ScrollTrigger.create({
-          trigger: panelsEl,
-          start: 'top 85%',
-          once: true,
-          onEnter() {
-            gsap.to(panelsEl, { opacity: 1, y: 0, duration: 1, ease: 'power3.out' });
-          },
-        });
-      }
-    }
-
-    // Parallax on each panel's image
-    if (!reducedMotion) {
-      document.querySelectorAll('.v8-panel').forEach((panel) => {
-        const img = panel.querySelector('.v8-panel__image');
-        if (!img) return;
-        gsap.fromTo(img, { yPercent: -3 }, {
-          yPercent: 3,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: panel,
-            start: 'top bottom',
-            end: 'bottom top',
-            scrub: 0.6,
-          },
-        });
-      });
-    }
-  }
-
   function initWorks() {
-    const panels = document.querySelectorAll('.v8-panel');
-    const mobile = window.innerWidth < 768;
+    document.querySelectorAll('.project-header').forEach((header) => {
+      header.addEventListener('click', () => {
+        const project = header.closest('.project');
+        const body = project.querySelector('.project-body');
+        const isOpen = project.classList.contains('is-open');
 
-    // Mobile: tap to expand (since hover doesn't work on touch)
-    if (mobile) {
-      panels.forEach((panel) => {
-        panel.addEventListener('click', (e) => {
-          if (e.target.closest('.v8-panel__toggle')) return;
-          const wasExpanded = panel.classList.contains('is-expanded');
-          panels.forEach((p) => p.classList.remove('is-expanded'));
-          if (!wasExpanded) panel.classList.add('is-expanded');
-        });
-      });
-    }
-
-    // Toggle button opens case study
-    document.querySelectorAll('.v8-panel__toggle').forEach((btn) => {
-      btn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const panel = btn.closest('.v8-panel');
-        const key = panel.dataset.project;
-        const caseStudy = document.getElementById('project-' + key);
-        if (!caseStudy) return;
-
-        const isOpen = caseStudy.classList.contains('is-open');
-        document.querySelectorAll('.v8-case-study.is-open').forEach((cs) => {
-          if (cs !== caseStudy) closeProject(cs);
+        // Close others
+        document.querySelectorAll('.project.is-open').forEach((p) => {
+          if (p !== project) closeProject(p);
         });
 
         if (isOpen) {
-          closeProject(caseStudy);
+          closeProject(project);
         } else {
-          openProject(caseStudy);
+          openProject(project, body);
         }
       });
     });
   }
 
+  // Close buttons inside expanded case studies
   document.querySelectorAll('.project-close-btn').forEach((btn) => {
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
       const project = btn.closest('.project');
       if (project && project.classList.contains('is-open')) {
         closeProject(project);
-        const panelsEl = document.querySelector('.v8-panels');
-        if (panelsEl) {
-          setTimeout(() => { lenis.scrollTo(panelsEl, { offset: -80 }); }, 100);
-        }
+        // Scroll back to the project header
+        setTimeout(() => {
+          lenis.scrollTo(project, { offset: -100 });
+        }, 100);
       }
     });
   });
 
-  function openProject(caseStudy) {
-    const body = caseStudy.querySelector('.project-body');
-    if (!body) return;
+  function openProject(project, body) {
+    project.classList.add('is-open');
     const inner = body.querySelector('.project-body__inner');
-
-    // Temporarily expand to measure natural height
-    body.style.height = 'auto';
-    body.style.overflow = 'hidden';
     const h = inner.offsetHeight;
-    body.style.height = '0px';
-
-    caseStudy.classList.add('is-open');
     gsap.fromTo(body, { height: 0, opacity: 0 }, {
       height: h,
       opacity: 1,
@@ -423,39 +347,22 @@
       ease: 'power3.out',
       onComplete() { body.style.height = 'auto'; },
     });
-
-    const key = caseStudy.id.replace('project-', '');
-    const panel = document.querySelector(`.v8-panel[data-project="${key}"]`);
-    if (panel) {
-      const label = panel.querySelector('.v8-panel__toggle-label');
-      if (label) label.textContent = 'Close';
-    }
-
-    setTimeout(() => { lenis.scrollTo(caseStudy, { offset: -20 }); }, 100);
+    const label = project.querySelector('.project-toggle__label');
+    if (label) label.textContent = 'Close';
   }
 
-  function closeProject(caseStudy) {
-    const body = caseStudy.querySelector('.project-body');
-    if (!body) return;
+  function closeProject(project) {
+    const body = project.querySelector('.project-body');
     const h = body.offsetHeight;
-
     gsap.fromTo(body, { height: h, opacity: 1 }, {
       height: 0,
       opacity: 0,
       duration: 0.5,
       ease: 'power3.in',
-      onComplete() {
-        caseStudy.classList.remove('is-open');
-        body.style.height = '';
-      },
+      onComplete() { project.classList.remove('is-open'); },
     });
-
-    const key = caseStudy.id.replace('project-', '');
-    const panel = document.querySelector(`.v8-panel[data-project="${key}"]`);
-    if (panel) {
-      const label = panel.querySelector('.v8-panel__toggle-label');
-      if (label) label.textContent = 'View Case Study';
-    }
+    const label = project.querySelector('.project-toggle__label');
+    if (label) label.textContent = 'View Case Study';
   }
 
   /* ═══════════════════════════════════════════════════════════
@@ -621,164 +528,63 @@
   }
 
   /* ═══════════════════════════════════════════════════════════
-     CONCEPT REVEAL v5 — scroll-built kinetic line sequence.
-     Each line gets its own reveal language:
-       L0 — word cascade: rise + de-blur, staggered from start
-       L1 — char bloom: settles in from the center outward
-       L2 — word cascade + bold coda punch ("is the work.")
-     Lines drift gently upward during their dwell so the frame
-     never feels frozen. Progress ticks track the active line.
-     Timing follows scrub-standard ratios: ~20% transition,
-     ~60% dwell per segment, ease-out in / ease-in out.
+     CONCEPT REVEAL — V2: stagger fade-in on enter, no pin
      ═══════════════════════════════════════════════════════════ */
-
-  // Split a line into word/char spans. Original text preserved for
-  // screen readers via aria-label on the parent.
-  function splitFragments(el, mode) {
-    const text = el.textContent;
-    el.setAttribute('aria-label', text);
-    const wrap = document.createElement('span');
-    wrap.setAttribute('aria-hidden', 'true');
-
-    if (mode === 'words') {
-      const words = text.split(' ');
-      words.forEach((w, i) => {
-        const s = document.createElement('span');
-        s.className = 'cr-word';
-        s.textContent = w;
-        wrap.appendChild(s);
-        if (i < words.length - 1) wrap.appendChild(document.createTextNode(' '));
-      });
-    } else {
-      Array.from(text).forEach((ch) => {
-        if (ch === ' ') {
-          wrap.appendChild(document.createTextNode(' '));
-          return;
-        }
-        const s = document.createElement('span');
-        s.className = 'cr-char';
-        s.textContent = ch;
-        wrap.appendChild(s);
-      });
-    }
-
-    el.textContent = '';
-    el.appendChild(wrap);
-    return Array.from(wrap.querySelectorAll('.cr-word, .cr-char'));
-  }
-
   function initConceptReveal() {
     const section = document.getElementById('concept-reveal');
     if (!section) return;
 
-    const lines = Array.from(section.querySelectorAll('.concept-reveal__line'));
-    const hlText = transitionHL.querySelector('.transition-headline__text');
-    const ticks = Array.from(section.querySelectorAll('.concept-reveal__tick'));
+    const brand = section.querySelector('.concept-reveal__brand');
+    const lines = section.querySelectorAll('.concept-reveal__line');
 
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      gsap.set(transitionHL, { opacity: 0 });
-      const last = lines[lines.length - 1];
-      gsap.set(last, { opacity: 1 });
-      const rmCoda = last.querySelector('.line-coda');
-      if (rmCoda) gsap.set(rmCoda, { opacity: 1, y: 0 });
+      // brand shown via transitionHL (fixed overlay); don't touch in-section brand
+      gsap.set(transitionHL, { opacity: 1 });
+      gsap.set([...lines], { opacity: 1, y: 0 });
       return;
     }
 
-    // ── Split ──
-    const words0 = splitFragments(lines[0], 'words');
-    const chars1 = splitFragments(lines[1], 'chars');
-    const words2 = splitFragments(lines[2].querySelector('.line-main'), 'words');
-    const coda   = lines[2].querySelector('.line-coda');
-
-    // Lines themselves stay visible; fragments carry the animation.
-    gsap.set(lines, { opacity: 1, transformOrigin: 'center center' });
-    gsap.set(words0, { opacity: 0, yPercent: 70, filter: 'blur(6px)' });
-    gsap.set(chars1, { opacity: 0, yPercent: 45, rotateX: -40, transformOrigin: 'center bottom', transformPerspective: 600 });
-    gsap.set(words2, { opacity: 0, yPercent: 60, filter: 'blur(6px)' });
-    if (coda) gsap.set(coda, { opacity: 0, y: 10, scale: 1.12 });
-
-    /* Segment map (timeline units — 1 unit ≈ 100vh of scroll at 320% pin):
-       L0: in 0.02–0.24 · dwell → 0.78 · out 0.78–0.94
-       L1: in 0.90–1.12 · dwell → 1.78 · out 1.78–1.94
-       L2: in 1.92–2.16 · coda 2.24–2.44 · holds to unpin (no exit) */
-    const TOTAL = 3.2;
-    const L1_START = 0.90;
-    const L2_START = 1.92;
-
+    // Brand + lines inside pinned section — GSAP owns everything, no hero conflict.
+    // Timeline (200vh):
+    // Brand is ONLY shown via #transition-headline (fixed overlay, hero-driven).
+    // This section's GSAP timeline handles ONLY the 3 lines + synced fade-out.
+    //   0.00–0.18   line 1 fades in
+    //   0.35–0.53   line 2 fades in
+    //   0.70–0.88   line 3 fades in
+    //   0.88–1.60   hold — brand + all lines visible together
+    //   1.60–1.95   lines + transitionHL (brand) fade out as one
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: section,
         start: 'top top',
-        end: '+=320%',
+        end: '+=150%',
         pin: true,
-        scrub: 1,
+        scrub: 0.5,
         anticipatePin: 1,
-        onEnter()     { hlOwnedByConceptReveal = true;  },
-        // Hard-set opacity on leave: on fast scrolls/jumps the hero's
-        // onUpdate can write opacity 1 after the scrubbed fade already
-        // finished, stranding the fixed headline over the page.
-        onLeave()     { hlOwnedByConceptReveal = false; gsap.set(transitionHL, { opacity: 0 }); },
-        onEnterBack() { hlOwnedByConceptReveal = true;  },
-        onLeaveBack() { hlOwnedByConceptReveal = false; },
-        onUpdate(self) {
-          const t = self.progress * TOTAL;
-          const active = t < L1_START ? 0 : t < L2_START ? 1 : 2;
-          ticks.forEach((tick, i) => tick.classList.toggle('is-active', i === active));
+        onEnter() {
+          // Hero has set transitionHL to full opacity; take ownership so hero stops touching it
+          hlOwnedByConceptReveal = true;
+        },
+        onLeaveBack() {
+          // Return transitionHL control to hero onUpdate (restores opacity + translateY)
+          hlOwnedByConceptReveal = false;
         },
       },
     });
 
-    // ── "Creative" hands off immediately — no pre-roll dwell ──
-    tl.to(transitionHL, { opacity: 0, duration: 0.10, ease: 'none' }, 0);
-    if (hlText) {
-      tl.to(hlText, { scale: 1.08, filter: 'blur(8px)', duration: 0.10, ease: 'power1.in' }, 0);
-    }
+    // .concept-reveal__brand stays opacity:0 — visual brand is transitionHL only
 
-    // ── L0: word cascade ──
-    tl.to(words0, {
-      opacity: 1, yPercent: 0, filter: 'blur(0px)',
-      duration: 0.14, ease: 'power3.out',
-      stagger: { each: 0.016, from: 'start' },
-    }, 0.02);
-    // dwell drift — keeps the frame alive while the line holds
-    tl.to(lines[0], { y: -14, duration: 0.54, ease: 'none' }, 0.24);
-    // exit — words lift away with a soft blur
-    tl.to(words0, {
-      opacity: 0, yPercent: -50, filter: 'blur(4px)',
-      duration: 0.12, ease: 'power2.in',
-      stagger: { each: 0.008, from: 'start' },
-    }, 0.78);
+    lines.forEach((line, i) => {
+      tl.fromTo(line,
+        { opacity: 0 },
+        { opacity: 1, duration: 0.18, ease: 'power2.out' },
+        i * 0.20
+      );
+    });
 
-    // ── L1: char bloom from center ──
-    tl.to(chars1, {
-      opacity: 1, yPercent: 0, rotateX: 0,
-      duration: 0.14, ease: 'power3.out',
-      stagger: { each: 0.006, from: 'center' },
-    }, L1_START);
-    tl.to(lines[1], { y: -14, duration: 0.52, ease: 'none' }, 1.12);
-    tl.to(chars1, {
-      opacity: 0, yPercent: -40,
-      duration: 0.12, ease: 'power2.in',
-      stagger: { each: 0.004, from: 'center' },
-    }, 1.78);
-
-    // ── L2: word cascade, then the coda lands bold ──
-    tl.to(words2, {
-      opacity: 1, yPercent: 0, filter: 'blur(0px)',
-      duration: 0.14, ease: 'power3.out',
-      stagger: { each: 0.022, from: 'start' },
-    }, L2_START);
-    if (coda) {
-      tl.to(coda, {
-        opacity: 1, y: 0, scale: 1,
-        duration: 0.18, ease: 'power3.out',
-      }, 2.24);
-    }
-    // L2 stays on screen — section unpins with the thesis still standing.
-    tl.to(lines[2], { y: -10, duration: 0.6, ease: 'none' }, 2.5);
-
-    // pad timeline so positions map 1:1 against TOTAL
-    tl.set({}, {}, TOTAL);
+    // Fade out in place — no y movement, just opacity
+    tl.to([...lines], { opacity: 0, duration: 0.35, ease: 'none' }, 1.20);
+    tl.to(transitionHL, { opacity: 0, duration: 0.35, ease: 'none' }, 1.20);
   }
 
   /* ═══════════════════════════════════════════════════════════
@@ -860,32 +666,14 @@
       },
     });
 
-    // Collect all text elements for forced cleanup on leave
-    const allTags  = Array.from(grid.querySelectorAll('.practice__tag'));
-    const allNames = Array.from(grid.querySelectorAll('.practice__name'));
-    const allNums  = Array.from(grid.querySelectorAll('.practice__num'));
-    const allRules = Array.from(grid.querySelectorAll('.practice__rule'));
-
     const dismantleTl = gsap.timeline({
       defaults: { ease: 'none' },
       scrollTrigger: {
         trigger: section,
         start: 'top top',
-        end: '+=100%',
+        end: '+=160%',
         pin: true,
-        scrub: 0.5,
-        onEnter() {
-          gsap.set([...allTags, ...allNames, ...allNums], { opacity: 1, y: 0, overwrite: true });
-          gsap.set(allRules, { scaleX: 1, overwrite: true });
-        },
-        onLeave() {
-          gsap.set([...allTags, ...allNames, ...allNums], { opacity: 0, overwrite: true });
-          gsap.set(allRules, { scaleX: 0, overwrite: true });
-        },
-        onEnterBack() {
-          gsap.set([...allTags, ...allNames, ...allNums], { opacity: 1, y: 0, overwrite: true });
-          gsap.set(allRules, { scaleX: 1, overwrite: true });
-        },
+        scrub: 1.2,
       },
     });
 
@@ -952,10 +740,10 @@
       const span = each * Math.max(0, n - 1);
       const o    = 0.15 + (3 - i) * 0.18;
 
-      if (tag)  dismantleTl.fromTo(tag,  { opacity: 1, y: 0, immediateRender: false }, { opacity: 0, y: -8, duration: 0.10, overwrite: 'auto' }, o);
-      if (name) dismantleTl.fromTo(name, { opacity: 1, y: 0, immediateRender: false }, { opacity: 0, y: -8, duration: 0.10, overwrite: 'auto' }, o + 0.05);
-      if (num)  dismantleTl.fromTo(num,  { opacity: 1, y: 0, immediateRender: false }, { opacity: 0, y: -8, duration: 0.10, overwrite: 'auto' }, o + 0.10);
-      if (rule) dismantleTl.fromTo(rule, { scaleX: 1,   immediateRender: false }, { scaleX: 0, duration: 0.12, overwrite: 'auto' }, o + 0.10);
+      if (tag)  dismantleTl.to(tag,  { opacity: 0, y: -8, duration: 0.10 }, o);
+      if (name) dismantleTl.to(name, { opacity: 0, y: -8, duration: 0.10 }, o + 0.05);
+      if (num)  dismantleTl.to(num,  { opacity: 0, y: -8, duration: 0.10 }, o + 0.10);
+      if (rule) dismantleTl.to(rule, { scaleX: 0, duration: 0.12 }, o + 0.10);
 
       if (n) {
         dismantleTl.to(shapes, {
@@ -976,7 +764,6 @@
     initNav();
     loadFrames();
     initReveals();
-    initWorksReveals();
     initConceptReveal();
     initProcess();
     initWorks();
