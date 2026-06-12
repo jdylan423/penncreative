@@ -1,0 +1,2864 @@
+{
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.co"
+        }
+      ],
+      "destination": "https://jeremypenn.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.co"
+        }
+      ],
+      "destination": "https://jeremypenn.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/galleries",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/galleries",
+      "permanent": true
+    },
+    {
+      "source": "/galleries",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/galleries",
+      "permanent": true
+    },
+    {
+      "source": "/installs",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/installs",
+      "permanent": true
+    },
+    {
+      "source": "/installs",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/installs",
+      "permanent": true
+    },
+    {
+      "source": "/about",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/about",
+      "permanent": true
+    },
+    {
+      "source": "/about",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/about",
+      "permanent": true
+    },
+    {
+      "source": "/contact",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/contact",
+      "permanent": true
+    },
+    {
+      "source": "/contact",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/contact",
+      "permanent": true
+    },
+    {
+      "source": "/sunsets",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/sunsets",
+      "permanent": true
+    },
+    {
+      "source": "/sunsets",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/sunsets",
+      "permanent": true
+    },
+    {
+      "source": "/sunsets/september-sunset",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/sunsets/september-sunset",
+      "permanent": true
+    },
+    {
+      "source": "/sunsets/september-sunset",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/sunsets/september-sunset",
+      "permanent": true
+    },
+    {
+      "source": "/sunsets/august-sunset",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/sunsets/august-sunset",
+      "permanent": true
+    },
+    {
+      "source": "/sunsets/august-sunset",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/sunsets/august-sunset",
+      "permanent": true
+    },
+    {
+      "source": "/sunsets/july-sunset",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/sunsets/july-sunset",
+      "permanent": true
+    },
+    {
+      "source": "/sunsets/july-sunset",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/sunsets/july-sunset",
+      "permanent": true
+    },
+    {
+      "source": "/sunsets/june-sunset",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/sunsets/june-sunset",
+      "permanent": true
+    },
+    {
+      "source": "/sunsets/june-sunset",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/sunsets/june-sunset",
+      "permanent": true
+    },
+    {
+      "source": "/sunsets/may-sunset",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/sunsets/may-sunset",
+      "permanent": true
+    },
+    {
+      "source": "/sunsets/may-sunset",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/sunsets/may-sunset",
+      "permanent": true
+    },
+    {
+      "source": "/sunsets/april-sunset",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/sunsets/april-sunset",
+      "permanent": true
+    },
+    {
+      "source": "/sunsets/april-sunset",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/sunsets/april-sunset",
+      "permanent": true
+    },
+    {
+      "source": "/sunsets/march-sunset",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/sunsets/march-sunset",
+      "permanent": true
+    },
+    {
+      "source": "/sunsets/march-sunset",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/sunsets/march-sunset",
+      "permanent": true
+    },
+    {
+      "source": "/beauty-in-the-breakdown",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/beauty-in-the-breakdown",
+      "permanent": true
+    },
+    {
+      "source": "/beauty-in-the-breakdown",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/beauty-in-the-breakdown",
+      "permanent": true
+    },
+    {
+      "source": "/beauty-in-the-breakdown/into-abstraction-1",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/beauty-in-the-breakdown/into-abstraction-1",
+      "permanent": true
+    },
+    {
+      "source": "/beauty-in-the-breakdown/into-abstraction-1",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/beauty-in-the-breakdown/into-abstraction-1",
+      "permanent": true
+    },
+    {
+      "source": "/beauty-in-the-breakdown/into-abstraction-2",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/beauty-in-the-breakdown/into-abstraction-2",
+      "permanent": true
+    },
+    {
+      "source": "/beauty-in-the-breakdown/into-abstraction-2",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/beauty-in-the-breakdown/into-abstraction-2",
+      "permanent": true
+    },
+    {
+      "source": "/beauty-in-the-breakdown/street-poetry",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/beauty-in-the-breakdown/street-poetry",
+      "permanent": true
+    },
+    {
+      "source": "/beauty-in-the-breakdown/street-poetry",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/beauty-in-the-breakdown/street-poetry",
+      "permanent": true
+    },
+    {
+      "source": "/beauty-in-the-breakdown/self-love",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/beauty-in-the-breakdown/self-love",
+      "permanent": true
+    },
+    {
+      "source": "/beauty-in-the-breakdown/self-love",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/beauty-in-the-breakdown/self-love",
+      "permanent": true
+    },
+    {
+      "source": "/beauty-in-the-breakdown/love-in-color",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/beauty-in-the-breakdown/love-in-color",
+      "permanent": true
+    },
+    {
+      "source": "/beauty-in-the-breakdown/love-in-color",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/beauty-in-the-breakdown/love-in-color",
+      "permanent": true
+    },
+    {
+      "source": "/beauty-in-the-breakdown/lift-the-clouds-of-the-past",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/beauty-in-the-breakdown/lift-the-clouds-of-the-past",
+      "permanent": true
+    },
+    {
+      "source": "/beauty-in-the-breakdown/lift-the-clouds-of-the-past",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/beauty-in-the-breakdown/lift-the-clouds-of-the-past",
+      "permanent": true
+    },
+    {
+      "source": "/beauty-in-the-breakdown/eyes-of-seduction",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/beauty-in-the-breakdown/eyes-of-seduction",
+      "permanent": true
+    },
+    {
+      "source": "/beauty-in-the-breakdown/eyes-of-seduction",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/beauty-in-the-breakdown/eyes-of-seduction",
+      "permanent": true
+    },
+    {
+      "source": "/beauty-in-the-breakdown/fragments-2",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/beauty-in-the-breakdown/fragments-2",
+      "permanent": true
+    },
+    {
+      "source": "/beauty-in-the-breakdown/fragments-2",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/beauty-in-the-breakdown/fragments-2",
+      "permanent": true
+    },
+    {
+      "source": "/beauty-in-the-breakdown/fragments-1",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/beauty-in-the-breakdown/fragments-1",
+      "permanent": true
+    },
+    {
+      "source": "/beauty-in-the-breakdown/fragments-1",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/beauty-in-the-breakdown/fragments-1",
+      "permanent": true
+    },
+    {
+      "source": "/hotlips",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/hotlips",
+      "permanent": true
+    },
+    {
+      "source": "/hotlips",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/hotlips",
+      "permanent": true
+    },
+    {
+      "source": "/hotlips/hot-lips-color-crash",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/hotlips/hot-lips-color-crash",
+      "permanent": true
+    },
+    {
+      "source": "/hotlips/hot-lips-color-crash",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/hotlips/hot-lips-color-crash",
+      "permanent": true
+    },
+    {
+      "source": "/hotlips/hot-lips-sunset",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/hotlips/hot-lips-sunset",
+      "permanent": true
+    },
+    {
+      "source": "/hotlips/hot-lips-sunset",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/hotlips/hot-lips-sunset",
+      "permanent": true
+    },
+    {
+      "source": "/hotlips/hot-lips-excursion",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/hotlips/hot-lips-excursion",
+      "permanent": true
+    },
+    {
+      "source": "/hotlips/hot-lips-excursion",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/hotlips/hot-lips-excursion",
+      "permanent": true
+    },
+    {
+      "source": "/hotlips/hot-lips-elevate",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/hotlips/hot-lips-elevate",
+      "permanent": true
+    },
+    {
+      "source": "/hotlips/hot-lips-elevate",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/hotlips/hot-lips-elevate",
+      "permanent": true
+    },
+    {
+      "source": "/hotlips/hot-lips-drift",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/hotlips/hot-lips-drift",
+      "permanent": true
+    },
+    {
+      "source": "/hotlips/hot-lips-drift",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/hotlips/hot-lips-drift",
+      "permanent": true
+    },
+    {
+      "source": "/hotlips/hot-lips-je-t-aime",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/hotlips/hot-lips-je-t-aime",
+      "permanent": true
+    },
+    {
+      "source": "/hotlips/hot-lips-je-t-aime",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/hotlips/hot-lips-je-t-aime",
+      "permanent": true
+    },
+    {
+      "source": "/hotlips/hot-lips-double-vision",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/hotlips/hot-lips-double-vision",
+      "permanent": true
+    },
+    {
+      "source": "/hotlips/hot-lips-double-vision",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/hotlips/hot-lips-double-vision",
+      "permanent": true
+    },
+    {
+      "source": "/hotlips/hot-lips-wave",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/hotlips/hot-lips-wave",
+      "permanent": true
+    },
+    {
+      "source": "/hotlips/hot-lips-wave",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/hotlips/hot-lips-wave",
+      "permanent": true
+    },
+    {
+      "source": "/hotlips/hot-lips-chinatown-alley",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/hotlips/hot-lips-chinatown-alley",
+      "permanent": true
+    },
+    {
+      "source": "/hotlips/hot-lips-chinatown-alley",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/hotlips/hot-lips-chinatown-alley",
+      "permanent": true
+    },
+    {
+      "source": "/vice-virtue",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/vice-virtue",
+      "permanent": true
+    },
+    {
+      "source": "/vice-virtue",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/vice-virtue",
+      "permanent": true
+    },
+    {
+      "source": "/vice-and-virtue/vice",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/vice-and-virtue/vice",
+      "permanent": true
+    },
+    {
+      "source": "/vice-and-virtue/vice",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/vice-and-virtue/vice",
+      "permanent": true
+    },
+    {
+      "source": "/vice-and-virtue/paradise",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/vice-and-virtue/paradise",
+      "permanent": true
+    },
+    {
+      "source": "/vice-and-virtue/paradise",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/vice-and-virtue/paradise",
+      "permanent": true
+    },
+    {
+      "source": "/vice-and-virtue/muse",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/vice-and-virtue/muse",
+      "permanent": true
+    },
+    {
+      "source": "/vice-and-virtue/muse",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/vice-and-virtue/muse",
+      "permanent": true
+    },
+    {
+      "source": "/vice-and-virtue/lust",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/vice-and-virtue/lust",
+      "permanent": true
+    },
+    {
+      "source": "/vice-and-virtue/lust",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/vice-and-virtue/lust",
+      "permanent": true
+    },
+    {
+      "source": "/vice-and-virtue/luscious",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/vice-and-virtue/luscious",
+      "permanent": true
+    },
+    {
+      "source": "/vice-and-virtue/luscious",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/vice-and-virtue/luscious",
+      "permanent": true
+    },
+    {
+      "source": "/vice-and-virtue/love",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/vice-and-virtue/love",
+      "permanent": true
+    },
+    {
+      "source": "/vice-and-virtue/love",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/vice-and-virtue/love",
+      "permanent": true
+    },
+    {
+      "source": "/vice-and-virtue/indulge",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/vice-and-virtue/indulge",
+      "permanent": true
+    },
+    {
+      "source": "/vice-and-virtue/indulge",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/vice-and-virtue/indulge",
+      "permanent": true
+    },
+    {
+      "source": "/vice-and-virtue/halo",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/vice-and-virtue/halo",
+      "permanent": true
+    },
+    {
+      "source": "/vice-and-virtue/halo",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/vice-and-virtue/halo",
+      "permanent": true
+    },
+    {
+      "source": "/vice-and-virtue/goddess",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/vice-and-virtue/goddess",
+      "permanent": true
+    },
+    {
+      "source": "/vice-and-virtue/goddess",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/vice-and-virtue/goddess",
+      "permanent": true
+    },
+    {
+      "source": "/vice-and-virtue/evol",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/vice-and-virtue/evol",
+      "permanent": true
+    },
+    {
+      "source": "/vice-and-virtue/evol",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/vice-and-virtue/evol",
+      "permanent": true
+    },
+    {
+      "source": "/vice-and-virtue/enlighten",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/vice-and-virtue/enlighten",
+      "permanent": true
+    },
+    {
+      "source": "/vice-and-virtue/enlighten",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/vice-and-virtue/enlighten",
+      "permanent": true
+    },
+    {
+      "source": "/vice-and-virtue/eden",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/vice-and-virtue/eden",
+      "permanent": true
+    },
+    {
+      "source": "/vice-and-virtue/eden",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/vice-and-virtue/eden",
+      "permanent": true
+    },
+    {
+      "source": "/vice-and-virtue/desire",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/vice-and-virtue/desire",
+      "permanent": true
+    },
+    {
+      "source": "/vice-and-virtue/desire",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/vice-and-virtue/desire",
+      "permanent": true
+    },
+    {
+      "source": "/evolution-ego",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/evolution-ego",
+      "permanent": true
+    },
+    {
+      "source": "/evolution-ego",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/evolution-ego",
+      "permanent": true
+    },
+    {
+      "source": "/evolution-and-ego/prey",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/evolution-and-ego/prey",
+      "permanent": true
+    },
+    {
+      "source": "/evolution-and-ego/prey",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/evolution-and-ego/prey",
+      "permanent": true
+    },
+    {
+      "source": "/evolution-and-ego/power",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/evolution-and-ego/power",
+      "permanent": true
+    },
+    {
+      "source": "/evolution-and-ego/power",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/evolution-and-ego/power",
+      "permanent": true
+    },
+    {
+      "source": "/evolution-and-ego/master",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/evolution-and-ego/master",
+      "permanent": true
+    },
+    {
+      "source": "/evolution-and-ego/master",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/evolution-and-ego/master",
+      "permanent": true
+    },
+    {
+      "source": "/evolution-and-ego/hunt",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/evolution-and-ego/hunt",
+      "permanent": true
+    },
+    {
+      "source": "/evolution-and-ego/hunt",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/evolution-and-ego/hunt",
+      "permanent": true
+    },
+    {
+      "source": "/evolution-and-ego/lust",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/evolution-and-ego/lust",
+      "permanent": true
+    },
+    {
+      "source": "/evolution-and-ego/lust",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/evolution-and-ego/lust",
+      "permanent": true
+    },
+    {
+      "source": "/evolution-and-ego/evolve",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/evolution-and-ego/evolve",
+      "permanent": true
+    },
+    {
+      "source": "/evolution-and-ego/evolve",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/evolution-and-ego/evolve",
+      "permanent": true
+    },
+    {
+      "source": "/evolution-and-ego/gaze",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/evolution-and-ego/gaze",
+      "permanent": true
+    },
+    {
+      "source": "/evolution-and-ego/gaze",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/evolution-and-ego/gaze",
+      "permanent": true
+    },
+    {
+      "source": "/images/about/Jeremy-Penn-2.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/about/Jeremy-Penn-2.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/about/Jeremy-Penn-2.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/about/Jeremy-Penn-2.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/beauty-in-the-breakdown/eyes-of-seduction.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/beauty-in-the-breakdown/eyes-of-seduction.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/beauty-in-the-breakdown/eyes-of-seduction.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/beauty-in-the-breakdown/eyes-of-seduction.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/beauty-in-the-breakdown/fragments-2.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/beauty-in-the-breakdown/fragments-2.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/beauty-in-the-breakdown/fragments-2.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/beauty-in-the-breakdown/fragments-2.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/beauty-in-the-breakdown/fragments.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/beauty-in-the-breakdown/fragments.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/beauty-in-the-breakdown/fragments.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/beauty-in-the-breakdown/fragments.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/beauty-in-the-breakdown/into-abstraction-1.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/beauty-in-the-breakdown/into-abstraction-1.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/beauty-in-the-breakdown/into-abstraction-1.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/beauty-in-the-breakdown/into-abstraction-1.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/beauty-in-the-breakdown/into-abstraction-2.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/beauty-in-the-breakdown/into-abstraction-2.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/beauty-in-the-breakdown/into-abstraction-2.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/beauty-in-the-breakdown/into-abstraction-2.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/beauty-in-the-breakdown/lift-the-clouds.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/beauty-in-the-breakdown/lift-the-clouds.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/beauty-in-the-breakdown/lift-the-clouds.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/beauty-in-the-breakdown/lift-the-clouds.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/beauty-in-the-breakdown/love.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/beauty-in-the-breakdown/love.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/beauty-in-the-breakdown/love.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/beauty-in-the-breakdown/love.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/beauty-in-the-breakdown/self-love.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/beauty-in-the-breakdown/self-love.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/beauty-in-the-breakdown/self-love.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/beauty-in-the-breakdown/self-love.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/beauty-in-the-breakdown/street-poetry.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/beauty-in-the-breakdown/street-poetry.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/beauty-in-the-breakdown/street-poetry.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/beauty-in-the-breakdown/street-poetry.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/evolution-and-ego/Evolve-Jeremy-Penn-Evolution-Painting-WebRes.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/evolution-and-ego/Evolve-Jeremy-Penn-Evolution-Painting-WebRes.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/evolution-and-ego/Evolve-Jeremy-Penn-Evolution-Painting-WebRes.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/evolution-and-ego/Evolve-Jeremy-Penn-Evolution-Painting-WebRes.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/evolution-and-ego/Gaze-Jeremy-Penn-Evolution-Painting-WebRes.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/evolution-and-ego/Gaze-Jeremy-Penn-Evolution-Painting-WebRes.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/evolution-and-ego/Gaze-Jeremy-Penn-Evolution-Painting-WebRes.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/evolution-and-ego/Gaze-Jeremy-Penn-Evolution-Painting-WebRes.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/evolution-and-ego/Master-JeremyPenn-Evolution-Painting-HighRes.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/evolution-and-ego/Master-JeremyPenn-Evolution-Painting-HighRes.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/evolution-and-ego/Master-JeremyPenn-Evolution-Painting-HighRes.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/evolution-and-ego/Master-JeremyPenn-Evolution-Painting-HighRes.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/evolution-and-ego/Power-Jeremy-Penn-Evolution-Painting-WebRes.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/evolution-and-ego/Power-Jeremy-Penn-Evolution-Painting-WebRes.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/evolution-and-ego/Power-Jeremy-Penn-Evolution-Painting-WebRes.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/evolution-and-ego/Power-Jeremy-Penn-Evolution-Painting-WebRes.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/evolution-and-ego/Prey-JeremyPenn-Evolution-Painting-HighRes.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/evolution-and-ego/Prey-JeremyPenn-Evolution-Painting-HighRes.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/evolution-and-ego/Prey-JeremyPenn-Evolution-Painting-HighRes.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/evolution-and-ego/Prey-JeremyPenn-Evolution-Painting-HighRes.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/evolution-and-ego/image-asset-1.jpeg",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/evolution-and-ego/image-asset-1.jpeg",
+      "permanent": true
+    },
+    {
+      "source": "/images/evolution-and-ego/image-asset-1.jpeg",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/evolution-and-ego/image-asset-1.jpeg",
+      "permanent": true
+    },
+    {
+      "source": "/images/evolution-and-ego/image-asset.jpeg",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/evolution-and-ego/image-asset.jpeg",
+      "permanent": true
+    },
+    {
+      "source": "/images/evolution-and-ego/image-asset.jpeg",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/evolution-and-ego/image-asset.jpeg",
+      "permanent": true
+    },
+    {
+      "source": "/images/home/hero-new.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/home/hero-new.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/home/hero-new.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/home/hero-new.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/hotlips/h-lips-1.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/hotlips/h-lips-1.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/hotlips/h-lips-1.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/hotlips/h-lips-1.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/hotlips/h-lips-10.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/hotlips/h-lips-10.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/hotlips/h-lips-10.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/hotlips/h-lips-10.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/hotlips/h-lips-2.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/hotlips/h-lips-2.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/hotlips/h-lips-2.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/hotlips/h-lips-2.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/hotlips/h-lips-3.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/hotlips/h-lips-3.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/hotlips/h-lips-3.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/hotlips/h-lips-3.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/hotlips/h-lips-4.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/hotlips/h-lips-4.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/hotlips/h-lips-4.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/hotlips/h-lips-4.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/hotlips/h-lips-8.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/hotlips/h-lips-8.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/hotlips/h-lips-8.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/hotlips/h-lips-8.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/hotlips/h-lips-9.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/hotlips/h-lips-9.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/hotlips/h-lips-9.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/hotlips/h-lips-9.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/hotlips/hl-1.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/hotlips/hl-1.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/hotlips/hl-1.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/hotlips/hl-1.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/hotlips/hot-lips-dimensions.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/hotlips/hot-lips-dimensions.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/hotlips/hot-lips-dimensions.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/hotlips/hot-lips-dimensions.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/installs/install-01.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/installs/install-01.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/installs/install-01.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/installs/install-01.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/installs/install-02.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/installs/install-02.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/installs/install-02.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/installs/install-02.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/installs/install-03.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/installs/install-03.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/installs/install-03.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/installs/install-03.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/installs/install-04.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/installs/install-04.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/installs/install-04.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/installs/install-04.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/installs/install-05.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/installs/install-05.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/installs/install-05.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/installs/install-05.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/installs/install-06.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/installs/install-06.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/installs/install-06.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/installs/install-06.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/installs/install-07.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/installs/install-07.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/installs/install-07.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/installs/install-07.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/installs/install-08.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/installs/install-08.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/installs/install-08.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/installs/install-08.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/installs/install-09.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/installs/install-09.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/installs/install-09.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/installs/install-09.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/installs/install-10.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/installs/install-10.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/installs/install-10.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/installs/install-10.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/installs/install-11.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/installs/install-11.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/installs/install-11.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/installs/install-11.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/installs/install-12.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/installs/install-12.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/installs/install-12.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/installs/install-12.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/installs/install-13.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/installs/install-13.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/installs/install-13.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/installs/install-13.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/installs/install-14.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/installs/install-14.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/installs/install-14.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/installs/install-14.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/installs/install-15.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/installs/install-15.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/installs/install-15.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/installs/install-15.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/installs/install-16.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/installs/install-16.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/installs/install-16.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/installs/install-16.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/installs/install-17.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/installs/install-17.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/installs/install-17.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/installs/install-17.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/installs/install-18.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/installs/install-18.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/installs/install-18.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/installs/install-18.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/installs/install-19.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/installs/install-19.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/installs/install-19.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/installs/install-19.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/installs/install-20.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/installs/install-20.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/installs/install-20.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/installs/install-20.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/installs/install-21.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/installs/install-21.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/installs/install-21.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/installs/install-21.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/installs/install-22.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/installs/install-22.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/installs/install-22.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/installs/install-22.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/installs/install-23.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/installs/install-23.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/installs/install-23.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/installs/install-23.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/installs/install-24.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/installs/install-24.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/installs/install-24.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/installs/install-24.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/installs/install-25.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/installs/install-25.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/installs/install-25.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/installs/install-25.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/installs/install-26.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/installs/install-26.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/installs/install-26.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/installs/install-26.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/installs/install-27.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/installs/install-27.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/installs/install-27.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/installs/install-27.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/logo/penn-logo-black.png",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/logo/penn-logo-black.png",
+      "permanent": true
+    },
+    {
+      "source": "/images/logo/penn-logo-black.png",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/logo/penn-logo-black.png",
+      "permanent": true
+    },
+    {
+      "source": "/images/sunsets/jeremy-penn-april-sunset.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/sunsets/jeremy-penn-april-sunset.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/sunsets/jeremy-penn-april-sunset.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/sunsets/jeremy-penn-april-sunset.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/sunsets/jeremy-penn-august-sunset.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/sunsets/jeremy-penn-august-sunset.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/sunsets/jeremy-penn-august-sunset.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/sunsets/jeremy-penn-august-sunset.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/sunsets/jeremy-penn-july-sunset.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/sunsets/jeremy-penn-july-sunset.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/sunsets/jeremy-penn-july-sunset.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/sunsets/jeremy-penn-july-sunset.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/sunsets/jeremy-penn-june-sunset.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/sunsets/jeremy-penn-june-sunset.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/sunsets/jeremy-penn-june-sunset.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/sunsets/jeremy-penn-june-sunset.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/sunsets/jeremy-penn-march-sunset.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/sunsets/jeremy-penn-march-sunset.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/sunsets/jeremy-penn-march-sunset.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/sunsets/jeremy-penn-march-sunset.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/sunsets/jeremy-penn-may-sunset.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/sunsets/jeremy-penn-may-sunset.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/sunsets/jeremy-penn-may-sunset.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/sunsets/jeremy-penn-may-sunset.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/sunsets/jeremy-penn-september-sunset.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/sunsets/jeremy-penn-september-sunset.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/sunsets/jeremy-penn-september-sunset.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/sunsets/jeremy-penn-september-sunset.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/vice-and-virtue/desire-jeremy-penn-artist.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/vice-and-virtue/desire-jeremy-penn-artist.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/vice-and-virtue/desire-jeremy-penn-artist.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/vice-and-virtue/desire-jeremy-penn-artist.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/vice-and-virtue/eden-jeremy-penn-artist.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/vice-and-virtue/eden-jeremy-penn-artist.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/vice-and-virtue/eden-jeremy-penn-artist.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/vice-and-virtue/eden-jeremy-penn-artist.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/vice-and-virtue/enlighten-jeremy-penn-artist.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/vice-and-virtue/enlighten-jeremy-penn-artist.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/vice-and-virtue/enlighten-jeremy-penn-artist.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/vice-and-virtue/enlighten-jeremy-penn-artist.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/vice-and-virtue/evole-jeremy-penn-artist.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/vice-and-virtue/evole-jeremy-penn-artist.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/vice-and-virtue/evole-jeremy-penn-artist.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/vice-and-virtue/evole-jeremy-penn-artist.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/vice-and-virtue/goddess-jeremy-penn-artist.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/vice-and-virtue/goddess-jeremy-penn-artist.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/vice-and-virtue/goddess-jeremy-penn-artist.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/vice-and-virtue/goddess-jeremy-penn-artist.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/vice-and-virtue/halo-jeremy-penn-artist.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/vice-and-virtue/halo-jeremy-penn-artist.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/vice-and-virtue/halo-jeremy-penn-artist.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/vice-and-virtue/halo-jeremy-penn-artist.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/vice-and-virtue/indulge-jeremy-penn-artist.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/vice-and-virtue/indulge-jeremy-penn-artist.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/vice-and-virtue/indulge-jeremy-penn-artist.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/vice-and-virtue/indulge-jeremy-penn-artist.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/vice-and-virtue/love-jeremy-penn-artist.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/vice-and-virtue/love-jeremy-penn-artist.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/vice-and-virtue/love-jeremy-penn-artist.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/vice-and-virtue/love-jeremy-penn-artist.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/vice-and-virtue/luscious-jeremy-penn-artist.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/vice-and-virtue/luscious-jeremy-penn-artist.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/vice-and-virtue/luscious-jeremy-penn-artist.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/vice-and-virtue/luscious-jeremy-penn-artist.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/vice-and-virtue/lust-jeremy-penn-artist.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/vice-and-virtue/lust-jeremy-penn-artist.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/vice-and-virtue/lust-jeremy-penn-artist.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/vice-and-virtue/lust-jeremy-penn-artist.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/vice-and-virtue/muse-jeremy-penn-artist.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/vice-and-virtue/muse-jeremy-penn-artist.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/vice-and-virtue/muse-jeremy-penn-artist.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/vice-and-virtue/muse-jeremy-penn-artist.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/vice-and-virtue/paradise-jeremy-penn-artist.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/vice-and-virtue/paradise-jeremy-penn-artist.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/vice-and-virtue/paradise-jeremy-penn-artist.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/vice-and-virtue/paradise-jeremy-penn-artist.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/vice-and-virtue/vice-jeremy-penn-artist.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/vice-and-virtue/vice-jeremy-penn-artist.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/images/vice-and-virtue/vice-jeremy-penn-artist.jpg",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jeremypenn.com"
+        }
+      ],
+      "destination": "https://jeremypennart.com/images/vice-and-virtue/vice-jeremy-penn-artist.jpg",
+      "permanent": true
+    }
+  ]
+}
