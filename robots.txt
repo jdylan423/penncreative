@@ -9,6 +9,7 @@ Disallow: /index-v8.html
 Disallow: /test-animations.html
 Disallow: /skills-preview.html
 Disallow: /fine-art-link-preview.html
+Disallow: /index-archive.html
 
 # AI search crawlers — explicitly allowed
 User-agent: GPTBot
