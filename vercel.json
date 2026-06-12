@@ -67,50 +67,6 @@
       "permanent": true
     },
     {
-      "source": "/about",
-      "has": [
-        {
-          "type": "host",
-          "value": "jeremypenn.com"
-        }
-      ],
-      "destination": "https://jeremypennart.com/about",
-      "permanent": true
-    },
-    {
-      "source": "/about",
-      "has": [
-        {
-          "type": "host",
-          "value": "www.jeremypenn.com"
-        }
-      ],
-      "destination": "https://jeremypennart.com/about",
-      "permanent": true
-    },
-    {
-      "source": "/contact",
-      "has": [
-        {
-          "type": "host",
-          "value": "jeremypenn.com"
-        }
-      ],
-      "destination": "https://jeremypennart.com/contact",
-      "permanent": true
-    },
-    {
-      "source": "/contact",
-      "has": [
-        {
-          "type": "host",
-          "value": "www.jeremypenn.com"
-        }
-      ],
-      "destination": "https://jeremypennart.com/contact",
-      "permanent": true
-    },
-    {
       "source": "/sunsets",
       "has": [
         {
@@ -2859,6 +2815,24 @@
       ],
       "destination": "https://jeremypennart.com/images/vice-and-virtue/vice-jeremy-penn-artist.jpg",
       "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/about",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/about/",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/contact",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/contact/",
+      "destination": "/index.html"
     }
   ]
 }

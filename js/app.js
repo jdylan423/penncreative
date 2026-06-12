@@ -81,6 +81,16 @@
     loader.classList.add('hidden');
     initScrollSystem();
 
+    // /about and /contact rewrites serve index.html — scroll to matching section
+    const pathSection = { '/about': 'about', '/contact': 'contact' };
+    const target = pathSection[window.location.pathname.replace(/\/$/, '')];
+    if (target) {
+      const el = document.getElementById(target);
+      if (el) requestAnimationFrame(() => {
+        lenis.scrollTo(el, { immediate: true });
+      });
+    }
+
     // Phase 2 — background load remaining
     for (let i = FIRST_FRAME + PHASE1_COUNT; i <= LAST_FRAME; i++) {
       const img = await loadFrame(i);
