@@ -6,6 +6,7 @@ Disallow: /index-v5.html
 Disallow: /index-v6.html
 Disallow: /index-v7.html
 Disallow: /index-v8.html
+Disallow: /index-v9.html
 Disallow: /test-animations.html
 Disallow: /skills-preview.html
 Disallow: /fine-art-link-preview.html
