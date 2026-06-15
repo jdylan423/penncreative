@@ -23,6 +23,36 @@
       "permanent": true
     },
     {
+      "source": "/beauty-breakdown/:path*",
+      "permanent": true,
+      "destination": "https://jeremypenn.com/"
+    },
+    {
+      "source": "/home",
+      "permanent": true,
+      "destination": "https://jeremypenn.com/"
+    },
+    {
+      "source": "/blog",
+      "permanent": true,
+      "destination": "https://jeremypenn.com/"
+    },
+    {
+      "source": "/nfts-blog/:path*",
+      "permanent": true,
+      "destination": "https://jeremypenn.com/"
+    },
+    {
+      "source": "/brands",
+      "permanent": true,
+      "destination": "https://jeremypenn.com/"
+    },
+    {
+      "source": "/jeremy-penn-instagram",
+      "permanent": true,
+      "destination": "https://jeremypenn.com/"
+    },
+    {
       "source": "/galleries",
       "has": [
         {
