@@ -12,6 +12,12 @@ Disallow: /skills-preview.html
 Disallow: /fine-art-link-preview.html
 Disallow: /index-archive.html
 
+# Fine art paths — redirect to jeremypennart.com, not portfolio content
+Disallow: /galleries
+Disallow: /installs
+Disallow: /sunsets
+Disallow: /frames
+
 # AI search crawlers — explicitly allowed
 User-agent: GPTBot
 Allow: /
