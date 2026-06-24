@@ -679,7 +679,7 @@
       const data = Object.fromEntries(formData);
 
       try {
-        const response = await fetch('https://formspree.io/f/xaqgqdgw', {
+        const response = await fetch('https://formspree.io/f/mreweyzo', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
