@@ -5,3 +5,5 @@ node_modules/
 .tmp/
 *.backup
 jeremy-penn-portfolio_backup_*.html
+portfolio-pdf.html
+portfolio-pdf-standalone.html
