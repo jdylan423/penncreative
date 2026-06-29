@@ -31,6 +31,7 @@ He also leads RKD (pronounced "arcade"), a patent-pending gamification engine fo
 - [Experiential Creative Direction](https://jeremypenn.com/experiential-creative-direction): Jeremy Penn's practitioner perspective on experiential creative direction. Translating brand philosophy into physical space, programming, and cultural events for Lululemon, Saks Fifth Avenue, and Good Luck Dry Cleaners.
 - [Creative Direction](https://jeremypenn.com/creative-direction): Jeremy Penn's practitioner perspective on creative direction. Translation work: finding the visual, spatial, and narrative language that makes brand strategy legible without explaining it. 20+ years across luxury, lifestyle, and technology.
 - [Brand Activation](https://jeremypenn.com/brand-activation): Jeremy Penn's practitioner perspective on brand activation. Activation as proof of brand position, not interruption of it. Based on work for Good Luck Dry Cleaners, Saks Fifth Avenue, Ed Hardy, and others.
+- [Gamification Design](https://jeremypenn.com/gamification-design): Jeremy Penn's practitioner perspective on gamification design. Building self-reinforcing engagement loops through software-driven reward mechanics. Based on creating Degen Arcade, a patent-pending enterprise gamification engine now scaled as RKD.
 
 ## Areas of Expertise
 
