@@ -138,6 +138,16 @@ Push to `main` → Vercel auto-deploys. No CI, no build command, just static fil
 
 ---
 
+## Copy Rules (enforced on all content edits)
+
+- **No em dashes** — use commas, colons, semicolons, or periods instead. Also ban `--`.
+- **No AI slop** — banned words and phrases: seamless, elevate, unleash, next-gen, leverage, cutting-edge, game-changer, robust, innovative, holistic, delve, foster, streamline, reimagine, transformative, curated, journey (metaphorical), ecosystem (metaphorical), granular, deep dive, synergy, paradigm, at the end of the day, it's worth noting, in today's world.
+- **No superlatives without evidence** — first, best, only, leading, pioneering require a cited source or removal.
+- **No invented outcomes** — no metrics, awards, revenue figures, or press mentions unless already present in existing site copy.
+- **Tone** — premium, concise, factual. Confident without hype.
+
+---
+
 ## Notes
 
 - Canonical URL in meta tags is `https://jeremypenn.com/` (not `.co`) — intentional or to-do.
