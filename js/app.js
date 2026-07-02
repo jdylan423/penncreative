@@ -437,6 +437,7 @@
     // Toggle button opens case study (works on both breakpoints)
     document.querySelectorAll('.v8-panel__toggle').forEach((btn) => {
       btn.addEventListener('click', (e) => {
+        e.preventDefault();
         e.stopPropagation();
         const panel = btn.closest('.v8-panel');
         const caseStudy = caseFor(panel);
