@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact — Jeremy Penn, Creative Director NYC</title>
+<title>Contact | Jeremy Penn, Creative Director NYC</title>
 <meta name="description" content="Get in touch with Jeremy Penn, Senior Creative Director based in New York. Available for brand strategy, creative direction, experiential design, and cultural strategy engagements.">
 <meta name="author" content="Jeremy Penn">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://jeremypenn.com/contact">
-<meta property="og:title" content="Contact — Jeremy Penn">
+<meta property="og:title" content="Contact | Jeremy Penn">
 <meta property="og:description" content="Get in touch with Jeremy Penn, Senior Creative Director based in New York.">
 <meta property="og:url" content="https://jeremypenn.com/contact">
 <meta property="og:type" content="website">
@@ -260,9 +260,17 @@
   <a href="https://jeremypenn.com" class="cs-footer__link">jeremypenn.com</a>
 </footer>
 
+<button class="cs-back-to-top" id="cs-back-to-top" aria-label="Back to top" type="button">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
 <script>
   const nav = document.getElementById('cs-nav');
   window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 80); }, { passive: true });
+
+  const backToTop = document.getElementById('cs-back-to-top');
+  window.addEventListener('scroll', () => { backToTop.classList.toggle('is-visible', window.scrollY > 600); }, { passive: true });
+  backToTop.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
 
   const form = document.getElementById('contact-form');
   const successMsg = document.getElementById('form-success');
